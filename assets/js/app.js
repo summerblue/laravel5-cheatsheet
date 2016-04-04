@@ -93,4 +93,24 @@ $(function(){
 	// Initialize foundation, or else!
 	$(document).foundation();
 
+	/**
+   * Open External Links In New Window
+   */
+   function initExternalLink(){
+      $('a[href^="http://"], a[href^="https://"]').each(function() {
+         var a = new RegExp('/' + window.location.host + '/');
+         if(!a.test(this.href) ) {
+             $(this).click(function(event) {
+                 event.preventDefault();
+                 event.stopPropagation();
+                 window.open(this.href, '_blank');
+             });
+         }
+      });
+  }
+
+	initExternalLink();
+
+
 });
+
