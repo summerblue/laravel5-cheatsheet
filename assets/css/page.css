@@ -17,7 +17,7 @@ body {
  */
 #top-button {
   position: fixed;
-  right: 40px;
+  right: 60px;
   bottom: 20px;
   border: 1px solid #5d5d5d;
   border-radius: 3px;
@@ -230,7 +230,7 @@ section.cmd-description {
 }
 .comments-toggle .icon-eye-close {
   position: fixed;
-  right: 40px;
+  right: 60px;
   top: 25px;
   font-size: 24px;
   z-index: 999999;
@@ -286,4 +286,14 @@ section.cmd-description {
 }
 .sidebar-canvas a {
   color: #FF7A7A;
+}
+
+
+@media (max-width:1440px) {
+  #top-button {
+    right: 40px;
+  }
+  .comments-toggle .icon-eye-close {
+    right: 40px;
+  }
 }
