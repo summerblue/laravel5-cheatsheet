@@ -102,8 +102,6 @@ php artisan --env
 // -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 php artisan --verbose
 
-// Display the framework change list
-?
 // Remove the compiled class file
 php artisan clear-compiled
 // Display the current framework environment
@@ -118,8 +116,7 @@ php artisan tinker
 php artisan down
 // Bring the application out of maintenance mode
 php artisan up
-// Regenerate framework autoload files
-?
+
 // Optimize the framework for better performance
 // --force    Force the compiled class file to be written.
 // --psr      Do not optimize Composer dump-autoload.
@@ -1228,8 +1225,21 @@ App::resolving(function($object){});
 Hash::check('secretpassword', $hashedPassword);
 Hash::needsRehash($hashedPassword);
               </pre>
-              <h6>Authentication <a href="http://laravel.com/docs/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">// Determine if the current user is authenticated
+
+              <h6>Encryption</h6>
+              <pre class="prettyprint lang-php">Crypt::encrypt('secretstring');
+Crypt::decrypt($encryptedString);
+Crypt::setMode('ctr');
+Crypt::setCipher($cipher);
+              </pre>
+
+              </section>
+
+      <section class="cmd-description grid-item">
+                      <h4><a name="auth" href="#auth">Auth</a></h4>
+
+<h6>Authentication <a href="http://laravel.com/docs/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+<pre class="prettyprint lang-php">// Determine if the current user is authenticated
 Auth::check();
 // Get the currently authenticated user
 Auth::user();
@@ -1255,16 +1265,51 @@ Auth::basic('username');
 Auth::onceBasic();
 // Send a password reminder to a user
 Password::remind($credentials, function($message, $user){});
-              </pre>
+</pre>
 
-              <h6>Encryption</h6>
-              <pre class="prettyprint lang-php">Crypt::encrypt('secretstring');
-Crypt::decrypt($encryptedString);
-Crypt::setMode('ctr');
-Crypt::setCipher($cipher);
-              </pre>
+                      <h6>Authorization <a href="http://laravel.com/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+                      <pre class="prettyprint lang-php">
+// Define abilities
+Gate::define('update-post', 'Class@method');
+Gate::define('update-post', function ($user, $post) {...});
+// Passing multiple argument
+Gate::define('delete-comment', function ($user, $post, $comment) {});
 
-              </section>
+// Check abilities
+Gate::denies('update-post', $post);
+Gate::allows('update-post', $post);
+Gate::check('update-post', $post);
+// Specified a user for checking
+Gate::forUser($user)->allows('update-post', $post);
+// Through User model, using Authorizable trait
+User::find(1)->can('update-post', $post);
+User::find(1)->cannot('update-post', $post);
+
+// Intercepting Authorization Checks
+Gate::before(function ($user, $ability) {});
+Gate::after(function ($user, $ability) {});
+
+// Chekcing in Blade template
+@can('update-post', $post)
+@endcan
+// with else
+@can('update-post', $post)
+@else
+@endcan
+
+// Generate a Policy
+php artisan make:policy PostPolicy
+// `policy` helper function
+policy($post)->update($user, $post)
+
+// Controller Authorization
+$this->authorize('update', $post);
+// for $user
+$this->authorizeForUser($user, 'update', $post);
+
+                      </pre>
+
+                      </section>
 
 <section class="cmd-description grid-item">
               <h4><a name="mail" href="#mail">Mail</a> <a href="http://laravel.com/docs/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
