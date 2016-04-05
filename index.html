@@ -78,11 +78,11 @@
                       </li>
                     </ul>
                   </div>
-          <div class="large-10 columns code-column code-container">
-            <div class="grid">
-            <section class="cmd-description grid-item">
-              <h4><a name="artisan" href="#artisan">Artisan</a> <a href="http://laravel.com/docs/artisan" title="Artisan CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">
+                  <div class="large-10 columns code-column code-container">
+                    <div class="grid">
+                    <section class="cmd-description grid-item">
+                      <h4><a name="artisan" href="#artisan">Artisan</a> <a href="http://laravel.com/docs/artisan" title="Artisan CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+                      <pre class="prettyprint lang-php">
 // Added in 5.1.11:http://laravel.com/docs/5.1/authorization#creating-policies
 php artisan make:policy PostPolicy
 // Displays help for a given command
@@ -101,7 +101,6 @@ php artisan --no-ansi
 php artisan --env
 // -v|vv|vvv Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 php artisan --verbose
-
 // Remove the compiled class file
 php artisan clear-compiled
 // Display the current framework environment
@@ -116,7 +115,6 @@ php artisan tinker
 php artisan down
 // Bring the application out of maintenance mode
 php artisan up
-
 // Optimize the framework for better performance
 // --force    Force the compiled class file to be written.
 // --psr      Do not optimize Composer dump-autoload.
@@ -127,27 +125,20 @@ php artisan serve
 php artisan serve --port 8080
 // Get it to work outside localhost
 php artisan serve --host 0.0.0.0
-// Create a new package workbench
-?
-
 // Set the application namespace
 php artisan app:name namespace
-
 // Flush expired password reset tokens
 php artisan auth:clear-resets
-
 // Flush the application cache
 php artisan cache:clear
 // Create a migration for the cache database table
 php artisan cache:table
-
 // Create a cache file for faster configuration loading
 php artisan config:cache
-// In program
-$exitCode = Artisan::call('config:cache');
 // Remove the configuration cache file
 php artisan config:clear
-
+// In program
+$exitCode = Artisan::call('config:cache');
 // Seed the database with records
 // --class      The class name of the root seeder (default: "DatabaseSeeder")
 // --database   The database connection to seed
@@ -192,7 +183,6 @@ php artisan make:model name
 php artisan make:provider name
 // Create a new form request class
 php artisan make:request name
-
 // Database migrations
 // --database   The database connection to use.
 // --force      Force the operation to run when in production.
@@ -203,11 +193,6 @@ php artisan migrate [--database[="..."]] [--force] [--path[="..."]] [--pretend] 
 // Create the migration repository
 php artisan migrate:install [--database[="..."]]
 // Create a new migration file
-// --create     The table to be created.
-// --table      The table to migrate.
-php artisan make:migration [--create[="..."]] [--table[="..."]] name
-// Reset and re-run all migrations
-// --seed       Indicates if the seed task should be re-run.
 // --seeder     The class name of the root seeder.
 php artisan migrate:refresh [--database[="..."]] [--force] [--seed] [--seeder[="..."]]
 // Rollback all database migrations
@@ -217,7 +202,6 @@ php artisan migrate:reset [--database[="..."]] [--force] [--pretend]
 php artisan migrate:rollback [--database[="..."]] [--force] [--pretend]
 // Show a list of migrations up/down
 php artisan migrate:status
-
 // Create a migration for the queue jobs database table
 php artisan queue:table
 // Listen to a given queue
@@ -273,14 +257,9 @@ php artisan session:table
 // --provider     The service provider that has assets you want to publish.
 // --tag          The tag that has assets you want to publish.
 php artisan vendor:publish [--force] [--provider[="..."]] [--tag[="..."]]
-
-// Create a migration for the password reminders table
-?
-
 php artisan tail [--path[="..."]] [--lines[="..."]] [connection]
               </pre>
               </section>
-
 <section class="cmd-description grid-item">
               <h4><a name="composer" href="#composer">Composer</a> <a href="http://getcomposer.org/doc/03-cli.md" title="Composer CLI Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
@@ -289,6 +268,7 @@ composer install
 composer update
 composer dump-autoload [--optimize]
 composer self-update
+composer require [options] [--] [vender/packages]...
               </pre>
 
               </section>
@@ -306,31 +286,36 @@ Config::set('database.default', 'sqlite');
 
 <section class="cmd-description grid-item">
               <h4><a name="routing" href="#routing">Route</a> <a href="http://laravel.com/docs/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="http://laravel.com/docs/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
-              <pre class="prettyprint lang-php">Route::get('foo', function(){});
+              <pre class="prettyprint lang-php">
+Route::get('foo', function(){});
 Route::get('foo', 'ControllerName@function');
 Route::controller('foo', 'FooController');
               </pre>
 
               <h6>RESTful Controllers <a href="http://laravel.com/docs/controllers#restful-resource-controllers" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">Route::resource('posts','PostsController');
+              <pre class="prettyprint lang-php">
+Route::resource('posts','PostsController');
 //Specify a subset of actions to handle on the route
 Route::resource('photo', 'PhotoController',['only' => ['index', 'show']]);
 Route::resource('photo', 'PhotoController',['except' => ['update', 'destroy']]);
               </pre>
 
               <h6>Triggering Errors <a href="http://laravel.com/docs/routing#throwing-404-errors" title="throwing-404-errors @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">App::abort(404);
+              <pre class="prettyprint lang-php">
+App::abort(404);
 $handler->missing(...) in ErrorServiceProvider::boot();
 throw new NotFoundHttpException;
               </pre>
 
               <h6>Route Parameters <a href="http://laravel.com/docs/routing#route-parameters" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">Route::get('foo/{bar}', function($bar){});
+              <pre class="prettyprint lang-php">
+Route::get('foo/{bar}', function($bar){});
 Route::get('foo/{bar?}', function($bar = 'bar'){});
               </pre>
 
               <h6>HTTP Verbs</h6>
-              <pre class="prettyprint lang-php">Route::any('foo', function(){});
+              <pre class="prettyprint lang-php">
+Route::any('foo', function(){});
 Route::post('foo', function(){});
 Route::put('foo', function(){});
 Route::patch('foo', function(){});
@@ -342,16 +327,20 @@ Route::match(['get', 'post'], '/', function(){});
               </pre>
 
               <h6>Secure Routes(TBD)</h6>
-              <pre class="prettyprint lang-php">Route::get('foo', array('https', function(){}));</pre>
+              <pre class="prettyprint lang-php">
+Route::get('foo', array('https', function(){}));
+              </pre>
 
               <h6>Route Constraints</h6>
-              <pre class="prettyprint lang-php">Route::get('foo/{bar}', function($bar){})
+              <pre class="prettyprint lang-php">
+Route::get('foo/{bar}', function($bar){})
 ->where('bar', '[0-9]+');
 Route::get('foo/{bar}/{baz}', function($bar, $baz){})
 ->where(array('bar' => '[0-9]+', 'baz' => '[A-Za-z]'))
               </pre>
-              <pre class="prettyprint lang-php">// Set a pattern to be used across routes
-		Route::pattern('bar', '[0-9]+')
+              <pre class="prettyprint lang-php">
+// Set a pattern to be used across routes
+Route::pattern('bar', '[0-9]+')
               </pre>
 
               <h6>HTTP Middleware <a href="http://laravel.com/docs/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
@@ -361,7 +350,8 @@ Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
               </pre>
 
               <h6>Named Routes</h6>
-              <pre class="prettyprint lang-php">Route::currentRouteName();
+              <pre class="prettyprint lang-php">
+Route::currentRouteName();
 Route::get('foo/bar', array('as' => 'foobar', function(){}));
 Route::get('user/profile', [
   'as' => 'profile', 'uses' => 'UserController@showProfile'
@@ -381,11 +371,13 @@ Route::group(['prefix' => 'admin'], function()
               </pre>
 
               <h6>Route Namespacing</h6>
-              <pre class="prettyprint lang-php">// This route group will carry the namespace 'Foo\Bar'
+              <pre class="prettyprint lang-php">
+// This route group will carry the namespace 'Foo\Bar'
 Route::group(array('namespace' => 'Foo\Bar'), function(){})
               </pre>
               <h6>Sub-Domain Routing</h6>
-              <pre class="prettyprint lang-php">// {sub} will be passed to the closure
+              <pre class="prettyprint lang-php">
+// {sub} will be passed to the closure
 Route::group(array('domain' => '{sub}.example.com'), function(){});
               </pre>
               </section>
@@ -429,7 +421,8 @@ DB::getQueryLog();
 
 <section class="cmd-description grid-item">
               <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel.com/docs/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">URL::full();
+              <pre class="prettyprint lang-php">
+URL::full();
 URL::current();
 URL::previous();
 URL::to('foo/bar', $parameters, $secure);
@@ -449,7 +442,8 @@ URL::setRequest($request);
 
 <section class="cmd-description grid-item">
               <h4><a name="events" href="#events">Event</a> <a href="http://laravel.com/docs/events" title="Events @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Event::fire('foo.bar', array($bar));
+              <pre class="prettyprint lang-php">
+Event::fire('foo.bar', array($bar));
 // Register an event listener with the dispatcher.
 // void listen(string|array $events, mixed $listener, int $priority)
 Event::listen('App\Events\UserSignup', function($bar){});
@@ -518,34 +512,34 @@ $users = $query->addSelect('age')->get();
 // Using Where Operators
 $users = DB::table('users')->where('votes', '>', 100)->get();
 $users = DB::table('users')
-                  ->where('votes', '>', 100)
-                  ->orWhere('name', 'John')
-                  ->get();
+              ->where('votes', '>', 100)
+              ->orWhere('name', 'John')
+              ->get();
 $users = DB::table('users')
-                  ->whereBetween('votes', [1, 100])->get();
+              ->whereBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-                  ->whereNotBetween('votes', [1, 100])->get();
+              ->whereNotBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-                  ->whereIn('id', [1, 2, 3])->get();
+              ->whereIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-                  ->whereNotIn('id', [1, 2, 3])->get();
+              ->whereNotIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-                  ->whereNull('updated_at')->get();
+              ->whereNull('updated_at')->get();
 DB::table('name')->whereNotNull('column')->get();
 // Dynamic Where Clauses
 $admin = DB::table('users')->whereId(1)->first();
 $john = DB::table('users')
-                  ->whereIdAndEmail(2, 'john@doe.com')
-                  ->first();
+              ->whereIdAndEmail(2, 'john@doe.com')
+              ->first();
 $jane = DB::table('users')
-                  ->whereNameOrAge('Jane', 22)
-                  ->first();
+              ->whereNameOrAge('Jane', 22)
+              ->first();
 // Order By, Group By, And Having
 $users = DB::table('users')
-                  ->orderBy('name', 'desc')
-                  ->groupBy('count')
-                  ->having('count', '>', 100)
-                  ->get();
+              ->orderBy('name', 'desc')
+              ->groupBy('count')
+              ->having('count', '>', 100)
+              ->get();
 DB::table('name')->orderBy('column')->get();
 DB::table('name')->orderBy('column','desc')->get();
 DB::table('name')->having('count', '>', 100)->get();
@@ -724,7 +718,8 @@ Model::deleted(function($model){});
 Model::observe(new FooObserver);
               </pre>
               <h6>Eloquent Configuration</h6>
-              <pre class="prettyprint lang-php">// Disables mass assignment exceptions from being thrown from model inserts and updates
+              <pre class="prettyprint lang-php">
+// Disables mass assignment exceptions from being thrown from model inserts and updates
 Eloquent::unguard();
 // Renables any ability to throw mass assignment exceptions
 Eloquent::reguard();
@@ -748,7 +743,8 @@ $variable->links();
 
 <section class="cmd-description grid-item">
               <h4><a name="localization" href="#localization">Lang</a> <a href="http://laravel.com/docs/localization" title="Localization @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">App::setLocale('en');
+              <pre class="prettyprint lang-php">
+App::setLocale('en');
 Lang::get('messages.welcome');
 Lang::get('messages.welcome', array('foo' => 'Bar'));
 Lang::has('messages.welcome');
@@ -760,7 +756,8 @@ trans('messages.welcome');
 
 <section class="cmd-description grid-item">
               <h4><a name="files" href="#files">File</a> <a href="http://laravel.com/api/5.0/Illuminate/Filesystem/Filesystem.html" title="Filesystem @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">File::exists('path');
+              <pre class="prettyprint lang-php">
+File::exists('path');
 File::get('path');
 File::getRemote('path');
 // Get a file's contents by requiring it
@@ -813,7 +810,8 @@ File::cleanDirectory('directory');
 <section class="cmd-description grid-item">
               <h4><a name="unittest" href="#unittest">UnitTest</a> <a href="http://laravel.com/docs/testing" title="Unit testing @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <h6>Install and run</h6>
-              <pre class="prettyprint lang-php">// add to composer and update:
+              <pre class="prettyprint lang-php">
+// add to composer and update:
 "phpunit/phpunit": "4.0.*"
 // run tests (from project root)
 ./vendor/bin/phpunit
@@ -853,7 +851,8 @@ $this->seed($connection);
               <h4><a name="SSH" href="#SSH">SSH</a> <a href="http://laravel.com/docs/ssh" title="SSH @ Laravel Docs"><i class="icon-file-text"></i></a>
               </h4>
               <h6>Executing Commands</h6>
-              <pre class="prettyprint lang-php">SSH::run(array $commands);
+              <pre class="prettyprint lang-php">
+SSH::run(array $commands);
 SSH::into($remote)->run(array $commands); // specify remote, otherwise assumes default
 SSH::run(array $commands, function($line)
 {
@@ -862,8 +861,11 @@ SSH::run(array $commands, function($line)
               </pre>
 
               <h6>Tasks</h6>
-              <pre class="prettyprint lang-php">SSH::define($taskName, array $commands); // define
-SSH::task($taskName, function($line) // execute
+              <pre class="prettyprint lang-php">
+// define
+SSH::define($taskName, array $commands);
+// execute
+SSH::task($taskName, function($line)
 {
   echo $line.PHP_EOL;
 });
@@ -987,7 +989,8 @@ $table->morphs('parent');
 
 <section class="cmd-description grid-item">
               <h4><a name="input" href="#input">Input</a> <a href="http://laravel.com/docs/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Input::get('key');
+              <pre class="prettyprint lang-php">
+Input::get('key');
 // Default if the key is missing
 Input::get('key', 'default');
 Input::has('key');
@@ -1000,7 +1003,8 @@ Input::flush();
               </pre>
 
               <h6>Session Input (flash)</h6>
-              <pre class="prettyprint lang-php">// Flash input to the session
+              <pre class="prettyprint lang-php">
+// Flash input to the session
 Input::flash();
 // Flash only some of the input to the session
 Input::flashOnly('foo', 'bar');
@@ -1011,7 +1015,8 @@ Input::old('key','default_value');
               </pre>
 
               <h6>Files</h6>
-              <pre class="prettyprint lang-php">// Use a file that's been uploaded
+              <pre class="prettyprint lang-php">
+// Use a file that's been uploaded
 Input::file('filename');
 // Determine if a file was uploaded
 Input::hasFile('filename');
@@ -1031,7 +1036,8 @@ Input::file('name')->move($destinationPath, $fileName);
 
 <section class="cmd-description grid-item">
               <h4><a name="cache" href="#cache">Cache</a> <a href="http://laravel.com/docs/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Cache::put('key', 'value', $minutes);
+              <pre class="prettyprint lang-php">
+Cache::put('key', 'value', $minutes);
 Cache::add('key', 'value', $minutes);
 Cache::forever('key', 'value');
 Cache::remember('key', $minutes, function(){ return 'value' });
@@ -1059,7 +1065,8 @@ Cache::section('group')->flush();
 
 <section class="cmd-description grid-item">
               <h4><a name="cookies" href="#cookies">Cookie</a> <a href="http://laravel.com/docs/requests#cookies" title="Cookies @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Cookie::get('key');
+              <pre class="prettyprint lang-php">
+Cookie::get('key');
 Cookie::get('key', 'default');
 // Create a cookie that lasts for ever
 Cookie::forever('key', 'value');
@@ -1079,7 +1086,8 @@ $response->withCookie(Cookie::make('name', 'value', $minutes));
 
 <section class="cmd-description grid-item">
               <h4><a name="sessions" href="#sessions">Session</a> <a href="http://laravel.com/docs/session" title="Session @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Session::get('key');
+              <pre class="prettyprint lang-php">
+Session::get('key');
 // Returns an item from the session
 Session::get('key', 'default');
 Session::get('key', function(){ return 'default'; });
@@ -1157,7 +1165,8 @@ Request::wantsJson();
 
 <section class="cmd-description grid-item">
               <h4><a name="responses" href="#responses">Response</a> <a href="http://laravel.com/docs/responses" title="Responses @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">return Response::make($contents);
+              <pre class="prettyprint lang-php">
+return Response::make($contents);
 return Response::make($contents, 200);
 return Response::json(array('key' => 'value'));
 return Response::json(array('key' => 'value'))
@@ -1177,7 +1186,8 @@ return Response::make($content)
 
 <section class="cmd-description grid-item">
               <h4><a name="redirects" href="#redirects">Redirect</a> <a href="http://laravel.com/docs/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">return Redirect::to('foo/bar');
+              <pre class="prettyprint lang-php">
+return Redirect::to('foo/bar');
 return Redirect::to('foo/bar')->with('key', 'value');
 return Redirect::to('foo/bar')->withInput(Input::get());
 return Redirect::to('foo/bar')->withInput(Input::except('password'));
@@ -1200,7 +1210,8 @@ return Redirect::intended('foo/bar');
 
 <section class="cmd-description grid-item">
               <h4><a name="service-container" href="#service-container">Container</a> <a href="http://laravel.com/docs/container" title="Service Container @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">App::bind('foo', function($app){ return new Foo; });
+              <pre class="prettyprint lang-php">
+App::bind('foo', function($app){ return new Foo; });
 App::make('foo');
 // If this class exists, it's returned
 App::make('FooBar');
@@ -1221,13 +1232,15 @@ App::resolving(function($object){});
 <section class="cmd-description grid-item">
               <h4><a name="security" href="#security">Security</a></h4>
               <h6>Hashing <a href="http://laravel.com/docs/hashing" title="Hashing @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">Hash::make('secretpassword');
+              <pre class="prettyprint lang-php">
+Hash::make('secretpassword');
 Hash::check('secretpassword', $hashedPassword);
 Hash::needsRehash($hashedPassword);
               </pre>
 
               <h6>Encryption</h6>
-              <pre class="prettyprint lang-php">Crypt::encrypt('secretstring');
+              <pre class="prettyprint lang-php">
+Crypt::encrypt('secretstring');
 Crypt::decrypt($encryptedString);
 Crypt::setMode('ctr');
 Crypt::setCipher($cipher);
@@ -1238,8 +1251,10 @@ Crypt::setCipher($cipher);
       <section class="cmd-description grid-item">
                       <h4><a name="auth" href="#auth">Auth</a></h4>
 
+
 <h6>Authentication <a href="http://laravel.com/docs/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-<pre class="prettyprint lang-php">// Determine if the current user is authenticated
+<pre class="prettyprint lang-php">
+// Determine if the current user is authenticated
 Auth::check();
 // Get the currently authenticated user
 Auth::user();
@@ -1265,10 +1280,10 @@ Auth::basic('username');
 Auth::onceBasic();
 // Send a password reminder to a user
 Password::remind($credentials, function($message, $user){});
-</pre>
+              </pre>
 
-                      <h6>Authorization <a href="http://laravel.com/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>Authorization <a href="http://laravel.com/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // Define abilities
 Gate::define('update-post', 'Class@method');
 Gate::define('update-post', function ($user, $post) {...});
@@ -1313,7 +1328,8 @@ $this->authorizeForUser($user, 'update', $post);
 
 <section class="cmd-description grid-item">
               <h4><a name="mail" href="#mail">Mail</a> <a href="http://laravel.com/docs/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Mail::send('email.view', $data, function($message){});
+              <pre class="prettyprint lang-php">
+Mail::send('email.view', $data, function($message){});
 Mail::send(array('html.view', 'text.view'), $data, $callback);
 Mail::queue('email.view', $data, function($message){});
 Mail::queueOn('queue-name', 'email.view', $data, $callback);
@@ -1323,7 +1339,8 @@ Mail::pretend();
               </pre>
 
               <h6>Messages</h6>
-              <pre class="prettyprint lang-php">// These can be used on the $message instance passed into Mail::send() or Mail::queue()
+              <pre class="prettyprint lang-php">
+// These can be used on the $message instance passed into Mail::send() or Mail::queue()
 $message->from('email@example.com', 'Mr. Example');
 $message->sender('email@example.com', 'Mr. Example');
 $message->returnPath('email@example.com');
@@ -1347,7 +1364,8 @@ $message->getSwiftMessage();
 
 <section class="cmd-description grid-item">
               <h4><a name="queues" href="#queues">Queue</a> <a href="http://laravel.com/docs/queues" title="Queues @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Queue::push('SendMail', array('message' => $message));
+              <pre class="prettyprint lang-php">
+Queue::push('SendMail', array('message' => $message));
 Queue::push('SendEmail@send', array('message' => $message));
 Queue::push(function($job) use $id {});
 // Same payload to multiple workers
@@ -1374,7 +1392,8 @@ php artisan queue:flush
 
 <section class="cmd-description grid-item">
               <h4><a name="validation" href="#validation">Validation</a> <a href="http://laravel.com/docs/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Validator::make(
+              <pre class="prettyprint lang-php">
+Validator::make(
 array('key' => 'Foo'),
 array('key' => 'required|in:Foo')
 );
@@ -1387,7 +1406,8 @@ return new FooValidator($translator, $data, $rules, $msgs);
               </pre>
 
               <h6>Rules</h6>
-              <pre class="prettyprint lang-php">accepted
+              <pre class="prettyprint lang-php">
+accepted
 active_url
 after:YYYY-MM-DD
 before:YYYY-MM-DD
@@ -1432,7 +1452,8 @@ url
 </section>
 <section class="cmd-description grid-item">
               <h4><a name="views" href="#views">View</a> <a href="http://laravel.com/docs/views" title="Views @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">View::make('path/to/view');
+              <pre class="prettyprint lang-php">
+View::make('path/to/view');
 View::make('foo/bar')->with('key', 'value');
 View::make('foo/bar')->withKey('value');
 View::make('foo/bar', array('key' => 'value'));
@@ -1454,36 +1475,46 @@ View::creator('viewname', function($view){});
 
 <section class="cmd-description grid-item">
               <h4><a name="blade" href="#blade">Blade</a> <a href="http://laravel.com/docs/templates#blade-templating" title="Blade Templating @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">@extends('layout.name')
+              <pre class="prettyprint lang-php">
+// Show a section in a template
+@yield('name')
+@extends('layout.name')
 // Begin a section
 @section('name')
 // End a section
 @stop
 // End a section and yield
+@section('sidebar')
 @show
 @parent
-// Show a section in a template
-@yield('name')
+
 @include('view.name')
 @include('view.name', array('key' => 'value'));
 @lang('messages.name')
 @choice('messages.name', 1);
+
 @if
 @else
 @elseif
 @endif
+
 @unless
 @endunless
+
 @for
 @endfor
+
 @foreach
 @endforeach
+
 @while
 @endwhile
+
 //forelse 4.2 feature
 @forelse($users as $user)
 @empty
 @endforelse
+
 // Echo content
 {{ $var }}
 // Echo escaped content
@@ -1501,7 +1532,8 @@ View::creator('viewname', function($view){});
 
 <section class="cmd-description grid-item">
               <h4><a name="forms" href="#forms">Form</a> <a href="https://github.com/illuminate/html/" title="Forms & HTML @ GitHub"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">Form::open(array('url' => 'foo/bar', 'method' => 'PUT'));
+              <pre class="prettyprint lang-php">
+Form::open(array('url' => 'foo/bar', 'method' => 'PUT'));
 Form::open(array('route' => 'foo.bar'));
 Form::open(array('route' => array('foo.bar', $parameter)));
 Form::open(array('action' => 'FooController@method'));
@@ -1514,7 +1546,8 @@ Form::model($foo, array('route' => array('foo.bar', $foo->bar)));
               </pre>
 
               <h6>Form Elements</h6>
-              <pre class="prettyprint lang-php">Form::label('id', 'Description');
+              <pre class="prettyprint lang-php">
+Form::label('id', 'Description');
 Form::label('id', 'Description', array('class' => 'foo'));
 Form::text('name');
 Form::text('name', $value);
@@ -1551,7 +1584,8 @@ Form::fooField();
 
 <section class="cmd-description grid-item">
               <h4><a name="html" href="#html">HTML</a></h4>
-              <pre class="prettyprint lang-php">HTML::macro('name', function(){});
+              <pre class="prettyprint lang-php">
+HTML::macro('name', function(){});
 // Convert an HTML string to entities
 HTML::entities($value);
 // Convert entities to HTML characters
@@ -1600,7 +1634,8 @@ HTML::obfuscate($value);
 
 <section class="cmd-description grid-item">
               <h4><a name="str" href="#str">String</a> <a href="http://laravel.com/docs/helpers#strings" title="Strings CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-              <pre class="prettyprint lang-php">// Transliterate a UTF-8 value to ASCII
+              <pre class="prettyprint lang-php">
+// Transliterate a UTF-8 value to ASCII
 Str::ascii($value)
 Str::camel($value)
 Str::contains($haystack, $needle)
@@ -1634,7 +1669,8 @@ Str::macro($name, $macro)
 <section class="cmd-description grid-item">
               <h4><a name="helpers" href="#helpers">Helper</a> <a href="http://laravel.com/docs/helpers" title="Helpers @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <h6>Arrays</h6>
-              <pre class="prettyprint lang-php">array_add($array, 'key', 'value');
+              <pre class="prettyprint lang-php">
+array_add($array, 'key', 'value');
 // Build a new array using a callback
 array_build($array, function(){});
 // Divide an array into two arrays. One with keys and the other with values
@@ -1673,7 +1709,8 @@ head($array);
 last($array);
               </pre>
               <h6>Paths</h6>
-              <pre class="prettyprint lang-php">app_path();
+              <pre class="prettyprint lang-php">
+app_path();
 //  Get the path to the public folder
 public_path();
 // App root path
@@ -1709,11 +1746,8 @@ trans('foo.bar');
 trans_choice('foo.bar', $count);
               </pre>
               <h6>URLs and Links</h6>
-              <pre class="prettyprint lang-php">action('FooController@method', $parameters);
-link_to('foo/bar', $title, $attributes, $secure);
-link_to_asset('img/foo.jpg', $title, $attributes, $secure);
-link_to_route('route.name', $title, $parameters, $attributes);
-link_to_action('FooController@method', $title, $params, $attrs);
+              <pre class="prettyprint lang-php">
+action('FooController@method', $parameters);
 // HTML Link
 asset('img/photo.jpg', $title, $attributes);
 // HTTPS link

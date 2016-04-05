@@ -139,7 +139,6 @@ php artisan config:cache
 php artisan config:clear
 // 程序内部调用 Artisan 命令
 $exitCode = Artisan::call('config:cache');
-
 // 运行所有的 seed 假数据生成类
 // --class      可以指定运行的类，默认是: "DatabaseSeeder"
 // --database   可以指定数据库
@@ -184,7 +183,6 @@ php artisan make:model name
 php artisan make:provider name
 // 创建一个新的表单请求类
 php artisan make:request name
-
 // 数据库迁移
 // --database   指定数据库连接（下同）
 // --force      当处于生产环境时强制执行，不询问（下同）
@@ -201,7 +199,8 @@ php artisan migrate:refresh [--database[="..."]] [--force] [--seed] [--seeder[="
 php artisan migrate:reset [--database[="..."]] [--force] [--pretend]
 // 回滚最最近一次运行的迁移任务
 php artisan migrate:rollback [--database[="..."]] [--force] [--pretend]
-
+// migrations 数据库表信息
+php artisan migrate:status
 // 为队列数据库表创建一个新的迁移
 php artisan queue:table
 // 监听指定的队列
@@ -224,7 +223,6 @@ php artisan queue:forget
 php artisan queue:restart
 // 对指定 id 的执行失败的队列任务进行重试(id: 失败队列任务的 ID)
 php artisan queue:retry id
-// Subscribe a URL to an Iron.io push queue
 // 指定订阅 Iron.io 队列的链接
 // queue: Iron.io 的队列名称.
 // url: 将被订阅的 URL.
@@ -258,63 +256,64 @@ php artisan session:table
 // --provider     指定你想要发布资源文件的服务提供者
 // --tag          指定你想要发布标记资源.
 php artisan vendor:publish [--force] [--provider[="..."]] [--tag[="..."]]
-                      </pre>
-                      </section>
+php artisan tail [--path[="..."]] [--lines[="..."]] [connection]
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="composer" href="#composer">Composer</a> <a href="http://getcomposer.org/doc/03-cli.md" title="Composer CLI Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="composer" href="#composer">Composer</a> <a href="http://getcomposer.org/doc/03-cli.md" title="Composer CLI Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 composer create-project laravel/laravel folder_name
 composer install
 composer update
 composer dump-autoload [--optimize]
 composer self-update
 composer require [options] [--] [vender/packages]...
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="Configuration" href="#Configuration">Config</a> <a href="http://laravel-china.org/docs/5.1/configuration" title="Configuration Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="Configuration" href="#Configuration">Config</a> <a href="http://laravel-china.org/docs/5.1/configuration" title="Configuration Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Config::get('app.timezone');
 //指定默认值
 Config::get('app.timezone', 'UTC');
 Config::set('database.default', 'sqlite');
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="routing" href="#routing">Route</a> <a href="http://laravel-china.org/docs/5.1/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="http://laravel-china.org/docs/5.1/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="routing" href="#routing">Route</a> <a href="http://laravel-china.org/docs/5.1/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="http://laravel-china.org/docs/5.1/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
+              <pre class="prettyprint lang-php">
 Route::get('foo', function(){});
 Route::get('foo', 'ControllerName@function');
 Route::controller('foo', 'FooController');
-                      </pre>
+              </pre>
 
-                      <h6>资源路由 <a href="http://laravel-china.org/docs/5.1/controllers#restful-resource-controllers" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>资源路由 <a href="http://laravel-china.org/docs/5.1/controllers#restful-resource-controllers" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 Route::resource('posts','PostsController');
 // 资源路由器只允许指定动作通过
 Route::resource('photo', 'PhotoController',['only' => ['index', 'show']]);
 Route::resource('photo', 'PhotoController',['except' => ['update', 'destroy']]);
-                      </pre>
+              </pre>
 
-                      <h6>出发错误 <a href="http://laravel-china.org/docs/5.1/routing#throwing-404-errors" title="throwing-404-errors @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>触发错误 <a href="http://laravel-china.org/docs/5.1/routing#throwing-404-errors" title="throwing-404-errors @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 App::abort(404);
 $handler->missing(...) in ErrorServiceProvider::boot();
 throw new NotFoundHttpException;
-                      </pre>
+              </pre>
 
-                      <h6>路由参数 <a href="http://laravel-china.org/docs/5.1/routing#route-parameters" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>路由参数 <a href="http://laravel-china.org/docs/5.1/routing#route-parameters" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 Route::get('foo/{bar}', function($bar){});
 Route::get('foo/{bar?}', function($bar = 'bar'){});
-                      </pre>
+              </pre>
 
-                      <h6>HTTP 请求方式</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>HTTP 请求方式</h6>
+              <pre class="prettyprint lang-php">
 Route::any('foo', function(){});
 Route::post('foo', function(){});
 Route::put('foo', function(){});
@@ -324,67 +323,67 @@ Route::delete('foo', function(){});
 Route::resource('foo', 'FooController');
 // 为一个路由注册多种请求方式
 Route::match(['get', 'post'], '/', function(){});
-                      </pre>
+              </pre>
 
-                      <h6>安全路由 (TBD)</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>安全路由 (TBD)</h6>
+              <pre class="prettyprint lang-php">
 Route::get('foo', array('https', function(){}));
-                      </pre>
+              </pre>
 
-                      <h6>路由约束</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>路由约束</h6>
+              <pre class="prettyprint lang-php">
 Route::get('foo/{bar}', function($bar){})
 ->where('bar', '[0-9]+');
 Route::get('foo/{bar}/{baz}', function($bar, $baz){})
 ->where(array('bar' => '[0-9]+', 'baz' => '[A-Za-z]'))
-                      </pre>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <pre class="prettyprint lang-php">
 // 设置一个可跨路由使用的模式
 Route::pattern('bar', '[0-9]+')
-                      </pre>
+              </pre>
 
-                      <h6>HTTP 中间件 <a href="http://laravel-china.org/docs/5.1/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>HTTP 中间件 <a href="http://laravel-china.org/docs/5.1/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // 为路由指定 Middleware
 Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
-                      </pre>
+              </pre>
 
-                      <h6>命名路由</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>命名路由</h6>
+              <pre class="prettyprint lang-php">
 Route::currentRouteName();
 Route::get('foo/bar', array('as' => 'foobar', function(){}));
 Route::get('user/profile', [
-    'as' => 'profile', 'uses' => 'UserController@showProfile'
+'as' => 'profile', 'uses' => 'UserController@showProfile'
 ]);
 $url = route('profile');
 $redirect = redirect()->route('profile');
-                      </pre>
+              </pre>
 
-                      <h6>路由前缀</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>路由前缀</h6>
+              <pre class="prettyprint lang-php">
 Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('users', function(){
-        return 'Matches The "/admin/users" URL';
-    });
+Route::get('users', function(){
+return 'Matches The "/admin/users" URL';
 });
-                      </pre>
+});
+              </pre>
 
-                      <h6>路由命名空间</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>路由命名空间</h6>
+              <pre class="prettyprint lang-php">
 // 此路由组将会传送 'Foo\Bar' 命名空间
 Route::group(array('namespace' => 'Foo\Bar'), function(){})
-                      </pre>
-                      <h6>子域名路由</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>子域名路由</h6>
+              <pre class="prettyprint lang-php">
 // {sub} 将在闭包中被忽略
 Route::group(array('domain' => '{sub}.example.com'), function(){});
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="app" href="#app">Environment</a> <a href="http://laravel-china.org/docs/5.1/configuration#environment-configuration" title="Environment Configuration @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="app" href="#app">Environment</a> <a href="http://laravel-china.org/docs/5.1/configuration#environment-configuration" title="Environment Configuration @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 $environment = app()->environment();
 $environment = App::environment();
 $environment = $app->environment();
@@ -392,13 +391,13 @@ $environment = $app->environment();
 if ($app->environment('local')){}
 // 判断当环境是否为 local 或 staging...
 if ($app->environment('local', 'staging')){}
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="log" href="#log">Log</a> <a href="http://laravel-china.org/docs/5.1/errors#logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
-// l记录器提供了 7 种在 RFC 5424 内定义的记录等级:
+<section class="cmd-description grid-item">
+              <h4><a name="log" href="#log">Log</a> <a href="http://laravel-china.org/docs/5.1/errors#logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
+// 记录器提供了 7 种在 RFC 5424 标准内定义的记录等级:
 // debug, info, notice, warning, error, critical, and alert.
 Log::info('info');
 Log::info('info',array('context'=>'additional info'));
@@ -408,20 +407,20 @@ Log::warning('warning');
 Log::getMonolog();
 // 添加监听器
 Log::listen(function($level, $message, $context) {});
-                      </pre>
+              </pre>
 
-                      <h6>记录 SQL 查询语句 <a href="http://laravel-china.org/docs/5.1/database#query-logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>记录 SQL 查询语句 <a href="http://laravel-china.org/docs/5.1/database#query-logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // 开启 log
 DB::connection()->enableQueryLog();
 // 获取已执行的查询数组
 DB::getQueryLog();
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel-china.org/docs/5.1/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel-china.org/docs/5.1/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 URL::full();
 URL::current();
 URL::previous();
@@ -437,12 +436,12 @@ URL::secureAsset('css/foo.css');
 URL::isValidUrl('http://example.com');
 URL::getRequest();
 URL::setRequest($request);
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="events" href="#events">Event</a> <a href="http://laravel-china.org/docs/5.1/events" title="Events @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="events" href="#events">Event</a> <a href="http://laravel-china.org/docs/5.1/events" title="Events @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Event::fire('foo.bar', array($bar));
 // 注册一个事件监听器.
 // void listen(string|array $events, mixed $listener, int $priority)
@@ -453,14 +452,14 @@ Event::listen('foo.bar', 'BarHandler', 5);
 // 你可以直接在处理逻辑中返回 false 来停止一个事件的传播.
 Event::listen('foor.bar', function($event){ return false; });
 Event::subscribe('UserEventHandler');
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/5.0/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+<section class="cmd-description grid-item">
+              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/5.0/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
 
-                      <h6>基本使用</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>基本使用</h6>
+              <pre class="prettyprint lang-php">
 DB::connection('connection_name');
 // 运行数据库查询语句
 $results = DB::select('select * from users where id = ?', [1]);
@@ -472,25 +471,25 @@ DB::listen(function($sql, $bindings, $time){ code_here; });
 // 数据库事务处理
 DB::transaction(function()
 {
-    DB::table('users')->update(['votes' => 1]);
-    DB::table('posts')->delete();
+DB::table('users')->update(['votes' => 1]);
+DB::table('posts')->delete();
 });
 DB::beginTransaction();
 DB::rollback();
 DB::commit();
-                      </pre>
+              </pre>
 
-                      <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/5.0/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/5.0/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // 取得数据表的所有行
 DB::table('name')->get();
 // 取数据表的部分数据
 DB::table('users')->chunk(100, function($users)
 {
-foreach ($users as $user)
-{
-  //
-}
+  foreach ($users as $user)
+  {
+      //
+  }
 });
 // 取回数据表的第一条数据
 $user = DB::table('users')->where('name', 'John')->first();
@@ -515,62 +514,62 @@ $users = DB::table('users')
               ->orWhere('name', 'John')
               ->get();
 $users = DB::table('users')
-              ->whereBetween('votes', [1, 100])->get();
+      ->whereBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-              ->whereNotBetween('votes', [1, 100])->get();
+      ->whereNotBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-              ->whereIn('id', [1, 2, 3])->get();
+      ->whereIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-              ->whereNotIn('id', [1, 2, 3])->get();
+      ->whereNotIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-              ->whereNull('updated_at')->get();
+      ->whereNull('updated_at')->get();
 DB::table('name')->whereNotNull('column')->get();
 // 动态的 Where 字句
 $admin = DB::table('users')->whereId(1)->first();
 $john = DB::table('users')
-              ->whereIdAndEmail(2, 'john@doe.com')
-              ->first();
+      ->whereIdAndEmail(2, 'john@doe.com')
+      ->first();
 $jane = DB::table('users')
-              ->whereNameOrAge('Jane', 22)
-              ->first();
+      ->whereNameOrAge('Jane', 22)
+      ->first();
 // Order By, Group By, 和 Having
 $users = DB::table('users')
-              ->orderBy('name', 'desc')
-              ->groupBy('count')
-              ->having('count', '>', 100)
-              ->get();
+      ->orderBy('name', 'desc')
+      ->groupBy('count')
+      ->having('count', '>', 100)
+      ->get();
 DB::table('name')->orderBy('column')->get();
 DB::table('name')->orderBy('column','desc')->get();
 DB::table('name')->having('count', '>', 100)->get();
 // 偏移 & 限制
 $users = DB::table('users')->skip(10)->take(5)->get();
-                  </pre>
+          </pre>
 
-                  <h6>Joins <a href="http://laravel-china.org/docs/5.1/5.0/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                  <pre class="prettyprint lang-php">
+          <h6>Joins <a href="http://laravel-china.org/docs/5.1/5.0/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <pre class="prettyprint lang-php">
 // 基本的 Join 声明语句
 DB::table('users')
-            ->join('contacts', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.id', 'contacts.phone', 'orders.price')
-            ->get();
+    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+    ->join('orders', 'users.id', '=', 'orders.user_id')
+    ->select('users.id', 'contacts.phone', 'orders.price')
+    ->get();
 // Left Join 声明语句
 DB::table('users')
-        ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
-        ->get();
+->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+->get();
 // select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
 DB::table('users')
-            ->where('name', '=', 'John')
-            ->orWhere(function($query)
-            {
-                $query->where('votes', '>', 100)
-                      ->where('title', '<>', 'Admin');
-            })
-            ->get();
-                  </pre>
+    ->where('name', '=', 'John')
+    ->orWhere(function($query)
+    {
+        $query->where('votes', '>', 100)
+              ->where('title', '<>', 'Admin');
+    })
+    ->get();
+          </pre>
 
-                  <h6>聚合 <a href="http://laravel-china.org/docs/5.1/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                  <pre class="prettyprint lang-php">
+          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <pre class="prettyprint lang-php">
 $users = DB::table('users')->count();
 $price = DB::table('orders')->max('price');
 $price = DB::table('orders')->min('price');
@@ -581,15 +580,15 @@ DB::table('name')->remember(5)->get();
 DB::table('name')->remember(5, 'cache-key-name')->get();
 DB::table('name')->cacheTags('my-key')->remember(5)->get();
 DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
-                  </pre>
+          </pre>
 
-                  <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                  <pre class="prettyprint lang-php">
+          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <pre class="prettyprint lang-php">
 $users = DB::table('users')
-                     ->select(DB::raw('count(*) as user_count, status'))
-                     ->where('status', '<>', 1)
-                     ->groupBy('status')
-                     ->get();
+                   ->select(DB::raw('count(*) as user_count, status'))
+                   ->where('status', '<>', 1)
+                   ->groupBy('status')
+                   ->get();
 // 返回行
 DB::select('select * from users where id = ?', array('value'));
 DB::insert('insert into foo set bar=2');
@@ -599,25 +598,25 @@ DB::delete('delete from bar');
 DB::statement('update foo set bar=2');
 // 在声明语句中加入原始的表达式
 DB::table('name')->select(DB::raw('count(*) as count, column2'))->get();
-                  </pre>
+          </pre>
 
-                  <h6>Inserts / Updates / Deletes / Unions / Pessimistic Locking</h6>
-                  <pre class="prettyprint lang-php">
+          <h6>Inserts / Updates / Deletes / Unions / Pessimistic Locking</h6>
+          <pre class="prettyprint lang-php">
 // 插入
 DB::table('users')->insert(
-    ['email' => 'john@example.com', 'votes' => 0]
+  ['email' => 'john@example.com', 'votes' => 0]
 );
 $id = DB::table('users')->insertGetId(
-    ['email' => 'john@example.com', 'votes' => 0]
+  ['email' => 'john@example.com', 'votes' => 0]
 );
 DB::table('users')->insert([
-    ['email' => 'taylor@example.com', 'votes' => 0],
-    ['email' => 'dayle@example.com', 'votes' => 0]
+  ['email' => 'taylor@example.com', 'votes' => 0],
+  ['email' => 'dayle@example.com', 'votes' => 0]
 ]);
 // 更新
 DB::table('users')
-            ->where('id', 1)
-            ->update(['votes' => 1]);
+          ->where('id', 1)
+          ->update(['votes' => 1]);
 DB::table('users')->increment('votes');
 DB::table('users')->increment('votes', 5);
 DB::table('users')->decrement('votes');
@@ -634,27 +633,25 @@ $users = DB::table('users')->whereNull('last_name')->union($first)->get();
 // 消极锁
 DB::table('users')->where('votes', '>', 100)->sharedLock()->get();
 DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
-                      </pre>
-              </section>
+              </pre>
+      </section>
 
-          <section class="cmd-description grid-item">
-              <h4>
-                <a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a>
-              </h4>
-              <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-              <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+      <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <pre class="prettyprint lang-php">
 // 定义一个 Eloquent 模型
 class User extends Model {}
 // 生成一个 Eloquent 模型
 php artisan make:model User
 // 指定一个自定义的数据表名称
 class User extends Model {
-    protected $table = 'my_users';
-                  }
-              </pre>
+  protected $table = 'my_users';
+}
+          </pre>
 
-              <h6>More</h6>
-              <pre class="prettyprint lang-php">
+          <h6>More</h6>
+          <pre class="prettyprint lang-php">
 Model::create(array('key' => 'value'));
 // 通过属性找到第一条相匹配的数据或创造一条新数据
 Model::firstOrCreate(array('key' => 'value'));
@@ -725,12 +722,12 @@ Model::observe(new FooObserver);
 Eloquent::unguard();
 // 重新开启「mass assignment」异常抛出功能
 Eloquent::reguard();
-              </pre>
-          </section>
+      </pre>
+  </section>
 
-          <section class="cmd-description grid-item">
-            <h4><a name="pagination" href="#pagination">Pagination</a> <a href="http://laravel-china.org/docs/5.1/pagination" title="Pagination @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-            <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="pagination" href="#pagination">Pagination</a> <a href="http://laravel-china.org/docs/5.1/pagination" title="Pagination @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 // 自动处理分页逻辑
 Model::paginate(15);
 Model::where('cars', 2)->paginate(15);
@@ -740,12 +737,12 @@ Model::where('cars', 2)->simplePaginate(15);
 Paginator::make($items, $totalItems, $perPage);
 // 在页面打印分页导航栏
 $variable->links();
-            </pre>
-          </section>
+              </pre>
+              </section>
 
-        <section class="cmd-description grid-item">
-            <h4><a name="localization" href="#localization">Lang</a> <a href="http://laravel-china.org/docs/5.1/localization" title="Localization @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-            <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="localization" href="#localization">Lang</a> <a href="http://laravel-china.org/docs/5.1/localization" title="Localization @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 App::setLocale('en');
 Lang::get('messages.welcome');
 Lang::get('messages.welcome', array('foo' => 'Bar'));
@@ -753,12 +750,12 @@ Lang::has('messages.welcome');
 Lang::choice('messages.apples', 10);
 // Lang::get 的别名
 trans('messages.welcome');
-            </pre>
-        </section>
+              </pre>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="files" href="#files">File</a> <a href="http://laravel.com/api/5.0/Illuminate/Filesystem/Filesystem.html" title="Filesystem @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="files" href="#files">File</a> <a href="http://laravel.com/api/5.0/Illuminate/Filesystem/Filesystem.html" title="Filesystem @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 File::exists('path');
 File::get('path');
 File::getRemote('path');
@@ -808,20 +805,20 @@ File::copyDirectory('directory', 'destination', $options = null);
 File::deleteDirectory('directory', $preserve = false);
 // 清空指定目录的所有文件和文件夹
 File::cleanDirectory('directory');
-                      </pre>
-                      </section>
+              </pre>
+              </section>
 
-                    <section class="cmd-description grid-item">
-                      <h4><a name="unittest" href="#unittest">UnitTest</a> <a href="http://laravel-china.org/docs/5.1/testing" title="Unit testing @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <h6>Install and run</h6>
-                      <pre class="prettyprint lang-php">
+            <section class="cmd-description grid-item">
+              <h4><a name="unittest" href="#unittest">UnitTest</a> <a href="http://laravel-china.org/docs/5.1/testing" title="Unit testing @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h6>Install and run</h6>
+              <pre class="prettyprint lang-php">
 // 将其加入到 composer.json 并更新:
 composer require "phpunit/phpunit:4.0.*"
 // 运行测试 (在项目根目录下运行)
 ./vendor/bin/phpunit
-                      </pre>
-                      <h6>Asserts</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>Asserts</h6>
+              <pre class="prettyprint lang-php">
 $this->assertTrue(true);
 $this->assertEquals('foo', $bar);
 $this->assertCount(1,$times);
@@ -838,58 +835,58 @@ $this->assertSessionHasErrors('name');
 // 由多个 key 值来假定 session 有错误...
 $this->assertSessionHasErrors(array('name', 'age'));
 $this->assertHasOldInput();
-                      </pre>
-                      <h6>Calling routes</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>Calling routes</h6>
+              <pre class="prettyprint lang-php">
 $response = $this->call($method, $uri, $parameters, $files, $server, $content);
 $response = $this->callSecure('GET', 'foo/bar');
 $this->session(['foo' => 'bar']);
 $this->flushSession();
 $this->seed();
 $this->seed($connection);
-                      </pre>
+              </pre>
 
-                    </section>
+            </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="SSH" href="#SSH">SSH</a> <a href="http://laravel-china.org/docs/5.1/ssh" title="SSH @ Laravel Docs"><i class="icon-file-text"></i></a>
-                      </h4>
-                      <h6>Executing Commands</h6>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="SSH" href="#SSH">SSH</a> <a href="http://laravel-china.org/docs/5.1/ssh" title="SSH @ Laravel Docs"><i class="icon-file-text"></i></a>
+              </h4>
+              <h6>Executing Commands</h6>
+              <pre class="prettyprint lang-php">
 SSH::run(array $commands);
 // 指定 remote, 否则将使用默认值
 SSH::into($remote)->run(array $commands);
 SSH::run(array $commands, function($line)
 {
-    echo $line.PHP_EOL;
+  echo $line.PHP_EOL;
 });
-                      </pre>
+              </pre>
 
-                      <h6>任务</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>任务</h6>
+              <pre class="prettyprint lang-php">
 // 定义任务
 SSH::define($taskName, array $commands);
 // 执行任务
 SSH::task($taskName, function($line)
 {
-    echo $line.PHP_EOL;
+  echo $line.PHP_EOL;
 });
-                      </pre>
+              </pre>
 
-                      <h6>SFTP 上传</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>SFTP 上传</h6>
+              <pre class="prettyprint lang-php">
 SSH::put($localFile, $remotePath);
 SSH::putString($string, $remotePath);
-                      </pre>
-                  </section>
+              </pre>
+          </section>
 
-                  <section class="cmd-description grid-item">
-                      <h4><a name="schema" href="#chema">Schema</a> <a href="http://laravel-china.org/docs/5.1/schema" title="Schema Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+          <section class="cmd-description grid-item">
+              <h4><a name="schema" href="#chema">Schema</a> <a href="http://laravel-china.org/docs/5.1/schema" title="Schema Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 // 创建指定数据表
 Schema::create('table', function($table)
 {
-    $table->increments('id');
+  $table->increments('id');
 });
 // 指定一个连接
 Schema::connection('foo')->create('table', function($table){});
@@ -913,10 +910,10 @@ $table->dropColumn(string|array);
 $table->engine = 'InnoDB';
 // 字段顺序，只能在 MySQL 中才能用
 $table->string('name')->after('email');
-                      </pre>
+              </pre>
 
-                      <h6>索引</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>索引</h6>
+              <pre class="prettyprint lang-php">
 $table->string('column')->unique();
 $table->primary('column');
 // 创建一个双主键
@@ -934,18 +931,18 @@ $table->index(array('first', 'last'), 'key_name');
 $table->dropPrimary('table_column_primary');
 $table->dropUnique('table_column_unique');
 $table->dropIndex('table_column_index');
-                      </pre>
+              </pre>
 
-                      <h6>外键</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>外键</h6>
+              <pre class="prettyprint lang-php">
 $table->foreign('user_id')->references('id')->on('users');
 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'|'restrict'|'set null'|'no action');
 $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade'|'restrict'|'set null'|'no action');
 $table->dropForeign('posts_user_id_foreign');
-                      </pre>
+              </pre>
 
-                      <h6>字段类型</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>字段类型</h6>
+              <pre class="prettyprint lang-php">
 // 自增
 $table->increments('id');
 $table->bigIncrements('id');
@@ -991,13 +988,13 @@ $table->morphs('parent');
 ->nullable()
 ->default($value)
 ->unsigned()
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="input" href="#input">Input</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="input" href="#input">Input</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Input::get('key');
 // 指定默认值
 Input::get('key', 'default');
@@ -1008,10 +1005,10 @@ Input::only('foo', 'bar');
 // 取除了 'foo' 的所有用户输入数组
 Input::except('foo');
 Input::flush();
-                      </pre>
+              </pre>
 
-                      <h6>会话周期内 Input </h6>
-                      <pre class="prettyprint lang-php">
+              <h6>会话周期内 Input </h6>
+              <pre class="prettyprint lang-php">
 // 清除会话周期内的输入
 Input::flash();
 // 清除会话周期内的指定输入
@@ -1020,10 +1017,10 @@ Input::flashOnly('foo', 'bar');
 Input::flashExcept('foo', 'baz');
 // 取回一个旧的输入条目
 Input::old('key','default_value');
-                      </pre>
+              </pre>
 
-                      <h6>Files</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>Files</h6>
+              <pre class="prettyprint lang-php">
 // 使用一个已上传的文件
 Input::file('filename');
 // 判断文件是否已上传
@@ -1038,13 +1035,13 @@ Input::file('name')->getMimeType();
 Input::file('name')->move($destinationPath);
 // 移动一个已上传的文件，并设置新的名字
 Input::file('name')->move($destinationPath, $fileName);
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="cache" href="#cache">Cache</a> <a href="http://laravel-china.org/docs/5.1/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="cache" href="#cache">Cache</a> <a href="http://laravel-china.org/docs/5.1/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Cache::put('key', 'value', $minutes);
 Cache::add('key', 'value', $minutes);
 Cache::forever('key', 'value');
@@ -1067,13 +1064,13 @@ Cache::decrement('key', $amount);
 Cache::section('group')->put('key', $value);
 Cache::section('group')->get('key');
 Cache::section('group')->flush();
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="cookies" href="#cookies">Cookie</a> <a href="http://laravel-china.org/docs/5.1/requests#cookies" title="Cookies @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="cookies" href="#cookies">Cookie</a> <a href="http://laravel-china.org/docs/5.1/requests#cookies" title="Cookies @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Cookie::get('key');
 Cookie::get('key', 'default');
 // 创建一个永久有效的 cookie
@@ -1087,13 +1084,13 @@ Cookie::forget('key');
 // 从 response 发送一个 cookie
 $response = Response::make('Hello World');
 $response->withCookie(Cookie::make('name', 'value', $minutes));
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="sessions" href="#sessions">Session</a> <a href="http://laravel-china.org/docs/5.1/session" title="Session @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="sessions" href="#sessions">Session</a> <a href="http://laravel-china.org/docs/5.1/session" title="Session @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Session::get('key');
 // 从会话中读取一个条目
 Session::get('key', 'default');
@@ -1120,13 +1117,13 @@ Session::flash('key', 'value');
 Session::reflash();
 // 重新暂存当前暂存数据的子集
 Session::keep(array('key1', 'key2'));
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="requests" href="#requests">Request</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Requests @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="requests" href="#requests">Request</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Requests @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 // url: http://xx.com/aa/bb
 Request::url();
 // 路径: /aa/bb
@@ -1165,18 +1162,18 @@ Request::format();
 Request::isJson();
 // 判断 HTTP Accept 头部信息是否为 application/json
 Request::wantsJson();
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="responses" href="#responses">Response</a> <a href="http://laravel-china.org/docs/5.1/responses" title="Responses @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="responses" href="#responses">Response</a> <a href="http://laravel-china.org/docs/5.1/responses" title="Responses @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 return Response::make($contents);
 return Response::make($contents, 200);
 return Response::json(array('key' => 'value'));
 return Response::json(array('key' => 'value'))
-	->setCallback(Input::get('callback'));
+->setCallback(Input::get('callback'));
 return Response::download($filepath);
 return Response::download($filepath, $filename, $headers);
 // 创建一个回应且修改其头部信息的值
@@ -1185,14 +1182,14 @@ $response->header('Content-Type', 'application/json');
 return $response;
 // 为回应附加上 cookie
 return Response::make($content)
-	->withCookie(Cookie::make('key', 'value'));
-                      </pre>
+->withCookie(Cookie::make('key', 'value'));
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="redirects" href="#redirects">Redirect</a> <a href="http://laravel-china.org/docs/5.1/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="redirects" href="#redirects">Redirect</a> <a href="http://laravel-china.org/docs/5.1/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 return Redirect::to('foo/bar');
 return Redirect::to('foo/bar')->with('key', 'value');
 return Redirect::to('foo/bar')->withInput(Input::get());
@@ -1210,13 +1207,13 @@ return Redirect::action('FooController@baz', array('value'));
 return Redirect::action('FooController@baz', array('key' => 'value'));
 // 跳转到目的地址，如果没有设置则使用默认值 foo/bar
 return Redirect::intended('foo/bar');
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="service-container" href="#service-container">Container</a> <a href="http://laravel-china.org/docs/5.1/container" title="Service Container @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="service-container" href="#service-container">Container</a> <a href="http://laravel-china.org/docs/5.1/container" title="Service Container @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 App::bind('foo', function($app){ return new Foo; });
 App::make('foo');
 // 如果存在此类, 则返回
@@ -1231,34 +1228,34 @@ App::bind('FooRepositoryInterface', 'BarRepository');
 App::register('FooServiceProvider');
 // 监听容器对某个对象的解析
 App::resolving(function($object){});
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="security" href="#security">Security</a></h4>
-                      <h6>哈希 <a href="http://laravel-china.org/docs/5.1/hashing" title="Hashing @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="security" href="#security">Security</a></h4>
+              <h6>哈希 <a href="http://laravel-china.org/docs/5.1/hashing" title="Hashing @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 Hash::make('secretpassword');
 Hash::check('secretpassword', $hashedPassword);
 Hash::needsRehash($hashedPassword);
-                      </pre>
+              </pre>
 
-                      <h6>加密解密</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>加密解密</h6>
+              <pre class="prettyprint lang-php">
 Crypt::encrypt('secretstring');
 Crypt::decrypt($encryptedString);
 Crypt::setMode('ctr');
 Crypt::setCipher($cipher);
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="auth" href="#auth">Auth</a></h4>
+<section class="cmd-description grid-item">
+              <h4><a name="auth" href="#auth">Auth</a></h4>
 
-                      <h6>用户认证 <a href="http://laravel-china.org/docs/5.1/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>用户认证 <a href="http://laravel-china.org/docs/5.1/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // 判断当前用户是否已认证（是否已登录）
 Auth::check();
 // 获取当前的认证用户
@@ -1287,10 +1284,10 @@ Auth::basic('username');
 Auth::onceBasic();
 // 发送密码重置提示给用户
 Password::remind($credentials, function($message, $user){});
-                      </pre>
+              </pre>
 
-                      <h6>用户授权 <a href="http://laravel-china.org/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
-                      <pre class="prettyprint lang-php">
+              <h6>用户授权 <a href="http://laravel-china.org/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <pre class="prettyprint lang-php">
 // 定义权限
 Gate::define('update-post', 'Class@method');
 Gate::define('update-post', function ($user, $post) {...});
@@ -1329,13 +1326,13 @@ $this->authorize('update', $post);
 // 指定用户 $user 授权
 $this->authorizeForUser($user, 'update', $post);
 
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="mail" href="#mail">Mail</a> <a href="http://laravel-china.org/docs/5.1/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="mail" href="#mail">Mail</a> <a href="http://laravel-china.org/docs/5.1/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Mail::send('email.view', $data, function($message){});
 Mail::send(array('html.view', 'text.view'), $data, $callback);
 Mail::queue('email.view', $data, function($message){});
@@ -1343,10 +1340,10 @@ Mail::queueOn('queue-name', 'email.view', $data, $callback);
 Mail::later(5, 'email.view', $data, function($message){});
 // 零时将发送邮件请求写入 log，方便测试
 Mail::pretend();
-                      </pre>
+              </pre>
 
-                      <h6>消息</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>消息</h6>
+              <pre class="prettyprint lang-php">
 // 这些都能在 $message 实例中使用, 并可传入到 Mail::send() 或 Mail::queue()
 $message->from('email@example.com', 'Mr. Example');
 $message->sender('email@example.com', 'Mr. Example');
@@ -1365,13 +1362,13 @@ $message->embed('foo\bar.txt');
 $message->embedData('foo', 'Data Name', $options);
 // 获取底层的 Swift Message 对象
 $message->getSwiftMessage();
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="queues" href="#queues">Queue</a> <a href="http://laravel-china.org/docs/5.1/queues" title="Queues @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="queues" href="#queues">Queue</a> <a href="http://laravel-china.org/docs/5.1/queues" title="Queues @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Queue::push('SendMail', array('message' => $message));
 Queue::push('SendEmail@send', array('message' => $message));
 Queue::push(function($job) use $id {});
@@ -1393,27 +1390,27 @@ php artisan queue:failed
 php artisan queue:forget 5
 // 删除所有失败任务
 php artisan queue:flush
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="validation" href="#validation">Validation</a> <a href="http://laravel-china.org/docs/5.1/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="validation" href="#validation">Validation</a> <a href="http://laravel-china.org/docs/5.1/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Validator::make(
-	array('key' => 'Foo'),
-	array('key' => 'required|in:Foo')
+array('key' => 'Foo'),
+array('key' => 'required|in:Foo')
 );
 Validator::extend('foo', function($attribute, $value, $params){});
 Validator::extend('foo', 'FooValidator@validate');
 Validator::resolver(function($translator, $data, $rules, $msgs)
 {
-	return new FooValidator($translator, $data, $rules, $msgs);
+return new FooValidator($translator, $data, $rules, $msgs);
 });
-                      </pre>
+              </pre>
 
-                      <h6>Rules</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>Rules</h6>
+              <pre class="prettyprint lang-php">
 accepted
 active_url
 after:YYYY-MM-DD
@@ -1454,12 +1451,12 @@ timezone
 unique:table,column,except,idColumn
 url
 
-                      </pre>
+              </pre>
 
-        </section>
-      <section class="cmd-description grid-item">
-                      <h4><a name="views" href="#views">View</a> <a href="http://laravel-china.org/docs/5.1/views" title="Views @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+</section>
+<section class="cmd-description grid-item">
+              <h4><a name="views" href="#views">View</a> <a href="http://laravel-china.org/docs/5.1/views" title="Views @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 View::make('path/to/view');
 View::make('foo/bar')->with('key', 'value');
 View::make('foo/bar')->withKey('value');
@@ -1476,13 +1473,13 @@ View::composer(array('view1', 'view2'), function($view){});
 // 注册一个视图构造器类
 View::composer('viewname', 'FooComposer');
 View::creator('viewname', function($view){});
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
+<section class="cmd-description grid-item">
 <h4><a name="blade" href="#blade">Blade</a> <a href="http://laravel-china.org/docs/5.1/templates#blade-templating" title="Blade Templating @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+              <pre class="prettyprint lang-php">
 // 区块占位
 @yield('name')
 // 扩展布局模板
@@ -1534,13 +1531,13 @@ View::creator('viewname', function($view){});
 {{{ $name or 'Default' }}}
 // 保留双大括号，以下会编译为 {{ name }}
 @{{ name }}
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="forms" href="#forms">Form</a> <a href="https://github.com/illuminate/html/" title="Forms & HTML @ GitHub"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="forms" href="#forms">Form</a> <a href="https://github.com/illuminate/html/" title="Forms & HTML @ GitHub"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 Form::open(array('url' => 'foo/bar', 'method' => 'PUT'));
 Form::open(array('route' => 'foo.bar'));
 Form::open(array('route' => array('foo.bar', $parameter)));
@@ -1551,10 +1548,10 @@ Form::close();
 Form::token();
 Form::model($foo, array('route' => array('foo.bar', $foo->bar)));
 
-                      </pre>
+              </pre>
 
-                      <h6>Form Elements</h6>
-                      <pre class="prettyprint lang-php">
+              <h6>Form Elements</h6>
+              <pre class="prettyprint lang-php">
 Form::label('id', 'Description');
 Form::label('id', 'Description', array('class' => 'foo'));
 Form::text('name');
@@ -1583,16 +1580,16 @@ Form::submit('Submit!', array('class' => 'name'));
 Form::button('name', array('class' => 'name'));
 Form::macro('fooField', function()
 {
-	return '&lt;input type="custom"/&gt;';
+return '&lt;input type="custom"/&gt;';
 });
 Form::fooField();
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="html" href="#html">HTML</a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="html" href="#html">HTML</a></h4>
+              <pre class="prettyprint lang-php">
 HTML::macro('name', function(){});
 // 将 HTML 字符串转为实体
 HTML::entities($value);
@@ -1633,13 +1630,13 @@ HTML::attributes($attributes);
 HTML::attributeElement($key, $value);
 // 混淆一个字符串以阻止垃圾邮件扫描器的嗅探
 HTML::obfuscate($value);
-                      </pre>
+              </pre>
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="str" href="#str">String</a> <a href="http://laravel-china.org/docs/5.1/helpers#strings" title="Strings CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="str" href="#str">String</a> <a href="http://laravel-china.org/docs/5.1/helpers#strings" title="Strings CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <pre class="prettyprint lang-php">
 // 将 UTF-8 的值直译为 ASCII 类型的值
 Str::ascii($value)
 Str::camel($value)
@@ -1664,15 +1661,15 @@ Str::snake($value, $delimiter = '_')
 Str::startsWith($haystack, $needles)
 Str::studly($value)
 Str::macro($name, $macro)
-                      </pre>
+              </pre>
 
 
-                      </section>
+              </section>
 
-      <section class="cmd-description grid-item">
-                      <h4><a name="helpers" href="#helpers">Helper</a> <a href="http://laravel-china.org/docs/5.1/helpers" title="Helpers @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                      <h6>Arrays</h6>
-                      <pre class="prettyprint lang-php">
+<section class="cmd-description grid-item">
+              <h4><a name="helpers" href="#helpers">Helper</a> <a href="http://laravel-china.org/docs/5.1/helpers" title="Helpers @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h6>Arrays</h6>
+              <pre class="prettyprint lang-php">
 array_add($array, 'key', 'value');
 // 使用回调来构建一个新数组
 array_build($array, function(){});
@@ -1708,9 +1705,9 @@ array_sort($array, function(){});
 head($array);
 // 数组的最后一个元素
 last($array);
-                      </pre>
-                      <h6>Paths</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>Paths</h6>
+              <pre class="prettyprint lang-php">
 // 取得 app 文件夹的完整路径
 app_path();
 
@@ -1722,9 +1719,9 @@ base_path();
 // Get the path to the storage folder
 // 获取存储文件夹路径
 storage_path();
-                      </pre>
-                      <h6>Strings</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>Strings</h6>
+              <pre class="prettyprint lang-php">
 // 会将给定的字符串转换成 驼峰式命名
 camel_case($value);
 // 获取不包含命名空间的类名称
@@ -1755,9 +1752,9 @@ studly_case('foo_bar');
 trans('foo.bar');
 // 根据后缀变化翻译给定的语句
 trans_choice('foo.bar', $count);
-                      </pre>
-                      <h6>URLs and Links</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>URLs and Links</h6>
+              <pre class="prettyprint lang-php">
 // 产生给定控制器行为网址
 action('FooController@method', $parameters);
 // 根据目前请求的协定（HTTP 或 HTTPS）产生资源文件网址
@@ -1768,9 +1765,9 @@ secure_asset('img/photo.jpg', $title, $attributes);
 route($route, $parameters, $absolute = true);
 // 产生给定路径的完整网址
 url('path', $parameters = array(), $secure = null);
-                      </pre>
-                      <h6>Miscellaneous</h6>
-                      <pre class="prettyprint lang-php">
+              </pre>
+              <h6>Miscellaneous</h6>
+              <pre class="prettyprint lang-php">
 // 取得当前 CSRF 令牌的内容
 csrf_token();
 // 输出给定变量并结束脚本运行
@@ -1779,18 +1776,18 @@ dd($value);
 value(function(){ return 'bar'; });
 // with 函数返回给定的数值。该函数主要用于方法炼结（method chaining），除此之外不太可能用到
 with(new Foo)->chainedMethod();
-                      </pre>
-              </div>
+              </pre>
             </div>
-           </div>
           </div>
          </div>
         </div>
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/jquery.highlight-4.js"></script>
-        <script src="assets/js/google-code-prettify/prettify.js"></script>
-        <script src="assets/js/foundation.min.js"></script>
-        <script src="assets/js/masonry.js"></script>
-        <script src="assets/js/app.js"></script>
-    </body>
+       </div>
+      </div>
+      <script src="assets/js/jquery.js"></script>
+      <script src="assets/js/jquery.highlight-4.js"></script>
+      <script src="assets/js/google-code-prettify/prettify.js"></script>
+      <script src="assets/js/foundation.min.js"></script>
+      <script src="assets/js/masonry.js"></script>
+      <script src="assets/js/app.js"></script>
+  </body>
 </html>
