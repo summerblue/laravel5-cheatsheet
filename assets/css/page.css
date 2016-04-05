@@ -197,6 +197,17 @@ li.social-icon a:hover {
 .sidebar-menu a:hover {
   color: #F7332D;
 }
+.avatar {
+    width: 19px;
+    height: 19px;
+    margin-right: 3px;
+    margin-bottom: -3px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-size: cover;;
+    background-image: url('../images/avatar.png');
+    display: inline-block;
+}
 
 /**
  * Sidebar icon
