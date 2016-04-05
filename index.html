@@ -1698,8 +1698,6 @@ array_has($array, 'products.desk');
 array_only($array, array('key'));
 // Return array of key => values
 array_pluck($array, 'key');
-// Will push an item onto the beginning of an array
-array_prepend($array, 'zero');
 // Return and remove 'key' from array
 array_pull($array, 'key');
 // Set an array item to a given value using "dot" notation
@@ -1792,8 +1790,6 @@ config('app.timezone', $default);
 $token = csrf_token();
 // Dumps the given variable and ends execution of the script
 dd($value);
-// Pushes a new job onto the Laravel job queue
-dispatch(new App\Jobs\SendEmails);
 // Gets the value of an environment variable or returns a default value
 $env = env('APP_ENV');
 $env = env('APP_ENV', 'production');
