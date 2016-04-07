@@ -156,9 +156,6 @@ ul {
 }
 ul.sidebar-menu li {
   float: left;
-  border-radius: 4px;
-  border: 1px solid #ffa0a0;
-  padding: 2px 4px;
   margin: 3px;
   font-size: 13px;
 }
@@ -187,6 +184,9 @@ li.social-icon a:hover {
 }
 .sidebar-menu a {
   color: #ffa0a0;
+  border-radius: 4px;
+  border: 1px solid #ffa0a0;
+  padding: 2px 4px;
 }
 .sidebar-menu a.active-link {
   color: #F7332D;
