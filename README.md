@@ -1,6 +1,6 @@
 ## Introduction
 
-A quick reference guide for Laravel 5.1 LTS, listing artisan, composer, routes and other useful bits of information.
+A quick reference guide (cheat sheet) for Laravel 5.1 LTS, listing artisan, composer, routes and other useful bits of information.
 
 We intend to build this Cheat Sheet more assessable and user friendly, you can view it with modern desktop :computer: browser and mobile device :iphone: .
 
