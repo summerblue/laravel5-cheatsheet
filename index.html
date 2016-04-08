@@ -1037,8 +1037,11 @@ $table->index('column', 'key_name');
 // Creates a dual index
 $table->index(array('first', 'last'));
 $table->index(array('first', 'last'), 'key_name');
+$table->dropPrimary(array('column'));
 $table->dropPrimary('table_column_primary');
+$table->dropUnique(array('column'));
 $table->dropUnique('table_column_unique');
+$table->dropIndex(array('column'));
 $table->dropIndex('table_column_index');
               </pre>
 
@@ -1047,6 +1050,7 @@ $table->dropIndex('table_column_index');
 $table->foreign('user_id')->references('id')->on('users');
 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'|'restrict'|'set null'|'no action');
 $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade'|'restrict'|'set null'|'no action');
+$table->dropForeign(array('user_id'));
 $table->dropForeign('posts_user_id_foreign');
               </pre>
 
