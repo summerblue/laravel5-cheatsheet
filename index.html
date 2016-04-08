@@ -715,6 +715,109 @@ Model::where('cars', 2)->forceDelete();
 Model::onlyTrashed()->where('cars', 2)->get();
               </pre>
 
+              <h6>Relationships</h6>
+              <pre class="prettyprint lang-php">
+// One To One - User::phone()
+  return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
+// One To One - Phone::user(), The Inverse Of The Relation
+return $this->belongsTo('App\User', 'foreign_key', 'other_key');
+
+// One To Many - Post::comments()
+return $this->hasMany('App\Comment', 'foreign_key', 'local_key');
+//  One To Many - Comment::post()
+return $this->belongsTo('App\Post', 'foreign_key', 'other_key');
+
+// Many To Many - User::roles();
+return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
+// Many To Many - Role::users();
+return $this->belongsToMany('App\User');
+// Many To Many - Retrieving Intermediate Table Columns
+$role->pivot->created_at;
+// Many To Many - Pivot table with extra attributes
+return $this->belongsToMany('App\Role')->withPivot('column1', 'column2');
+// Many To Many - Automatically maintained created_at and updated_at timestamps
+return $this->belongsToMany('App\Role')->withTimestamps();
+
+// Has Many Through - Country::posts(), A Country model have
+// many Post models through an intermediate User model (User::country_id)
+return $this->hasManyThrough('App\Post', 'App\User', 'country_id', 'user_id');
+
+// Polymorphic Relations - Photo::imageable()
+return $this->morphTo();
+// Polymorphic Relations - Staff::photos()
+return $this->morphMany('App\Photo', 'imageable');
+// Polymorphic Relations - Product::photos()
+return $this->morphMany('App\Photo', 'imageable');
+// Polymorphic Relations - Register the morphMap in your AppServiceProvider
+Relation::morphMap([
+    'Post' => App\Post::class,
+    'Comment' => App\Comment::class,
+]);
+
+// Many To Many Polymorphic Relations - Tables: posts,videos,tags,taggables
+// Post::tags()
+return $this->morphToMany('App\Tag', 'taggable');
+// Video::tags()
+return $this->morphToMany('App\Tag', 'taggable');
+// Tag::posts()
+return $this->morphedByMany('App\Post', 'taggable');
+// Tag::videos()
+return $this->morphedByMany('App\Video', 'taggable');
+
+// Querying Relations
+$user->posts()->where('active', 1)->get();
+// Retrieve all posts that have at least one comment...
+$posts = App\Post::has('comments')->get();
+// Retrieve all posts that have three or more comments...
+$posts = Post::has('comments', '>=', 3)->get();
+// Retrieve all posts that have at least one comment with votes...
+$posts = Post::has('comments.votes')->get();
+// Retrieve all posts with at least one comment containing words like foo%
+$posts = Post::whereHas('comments', function ($query) {
+    $query->where('content', 'like', 'foo%');
+})->get();
+
+// Eager Loading
+$books = App\Book::with('author')->get();
+$books = App\Book::with('author', 'publisher')->get();
+$books = App\Book::with('author.contacts')->get();
+
+// Lazy Eager Loading
+$books->load('author', 'publisher');
+
+// Inserting Related Models
+$comment = new App\Comment(['message' => 'A new comment.']);
+$post->comments()->save($comment);
+// save multiple related models
+$post->comments()->saveMany([
+    new App\Comment(['message' => 'A new comment.']),
+    new App\Comment(['message' => 'Another comment.']),
+]);
+$post->comments()->create(['message' => 'A new comment.']);
+
+// Updating a belongsTo relationship
+$user->account()->associate($account);
+$user->save();
+$user->account()->dissociate();
+$user->save();
+
+// Inserting Related Models - Many To Many Relationships
+$user->roles()->attach($roleId);
+$user->roles()->attach($roleId, ['expires' => $expires]);
+// Detach a single role from the user...
+$user->roles()->detach($roleId);
+// Detach all roles from the user...
+$user->roles()->detach();
+$user->roles()->detach([1, 2, 3]);
+$user->roles()->attach([1 => ['expires' => $expires], 2, 3]);
+
+// Any IDs that are not in the given array will be removed from the intermediate table.
+$user->roles()->sync([1, 2, 3]);
+// You may also pass additional intermediate table values with the IDs:
+$user->roles()->sync([1 => ['expires' => true], 2, 3]);
+
+              </pre>
+
               <h6>Events</h6>
               <pre class="prettyprint lang-php">Model::creating(function($model){});
 Model::created(function($model){});
