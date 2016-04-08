@@ -460,7 +460,7 @@ Event::listen('foo.*', function($bar){});
 Event::listen('foo.bar', 'FooHandler', 10);
 Event::listen('foo.bar', 'BarHandler', 5);
 // Stopping The Propagation Of An Event
-// You may do so using by returning false from your handler.
+// You may do so by returning false from your handler.
 Event::listen('foor.bar', function($event){ return false; });
 Event::subscribe('UserEventHandler');
               </pre>
