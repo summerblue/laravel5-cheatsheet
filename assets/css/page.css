@@ -308,3 +308,39 @@ section.cmd-description {
     right: 40px;
   }
 }
+
+/**
+ * Flags
+ */
+.languages-flag {
+    margin-top: 10px;
+    color: gray;
+}
+.languages-flag a {
+    margin: 0 .3em;
+}
+ i.flag:not(.icon),i.flag:not(.icon):before {
+     display: inline-block;
+     width: 16px;
+     height: 11px
+ }
+
+i.flag:not(.icon) {
+     line-height: 11px;
+     vertical-align: baseline;
+     -webkit-backface-visibility: hidden;
+     backface-visibility: hidden
+ }
+
+i.flag:not(.icon):before {
+     content: '';
+     background: url('../images/flags.png') -108px -1976px no-repeat
+ }
+
+i.flag.china:before,i.flag.cn:before {
+    background-position: 0 -1196px
+}
+
+i.flag.gb:before,i.flag.united.kingdom:before {
+    background-position: -36px -26px
+}
