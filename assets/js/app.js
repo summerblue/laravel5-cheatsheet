@@ -97,7 +97,7 @@ $(function(){
    * Open External Links In New Window
    */
    function initExternalLink(){
-      $('a[href^="http://"], a[href^="https://"]').each(function() {
+      $('section a[href^="http://"], section a[href^="https://"]').each(function() {
          var a = new RegExp('/' + window.location.host + '/');
          if(!a.test(this.href) ) {
              $(this).click(function(event) {
