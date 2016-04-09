@@ -374,6 +374,7 @@ Route::get('foo/bar', array('as' => 'foobar', function(){}));
 Route::get('user/profile', [
   'as' => 'profile', 'uses' => 'UserController@showProfile'
 ]);
+Route::get('user/profile', 'UserController@showProfile')->name('profile');
 $url = route('profile');
 $redirect = redirect()->route('profile');
               </pre>
