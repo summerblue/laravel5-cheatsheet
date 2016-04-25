@@ -365,6 +365,7 @@ Route::pattern('bar', '[0-9]+')
               <pre class="prettyprint lang-php">
 // Assigning Middleware To Routes
 Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
+Route::get('admin/profile', function(){})->middleware('auth');
               </pre>
 
               <h6>Named Routes</h6>
