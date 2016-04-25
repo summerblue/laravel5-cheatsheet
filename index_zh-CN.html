@@ -366,6 +366,7 @@ Route::pattern('bar', '[0-9]+')
               <pre class="prettyprint lang-php">
 // 为路由指定 Middleware
 Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
+Route::get('admin/profile', function(){})->middleware('auth');
               </pre>
 
               <h6>命名路由</h6>
