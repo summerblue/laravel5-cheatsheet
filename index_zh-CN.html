@@ -477,7 +477,7 @@ Event::subscribe('UserEventHandler');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/5.0/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
 
               <h6>基本使用</h6>
               <pre class="prettyprint lang-php">
@@ -500,7 +500,7 @@ DB::rollback();
 DB::commit();
               </pre>
 
-              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/5.0/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 取得数据表的所有行
 DB::table('name')->get();
@@ -566,7 +566,7 @@ DB::table('name')->having('count', '>', 100)->get();
 $users = DB::table('users')->skip(10)->take(5)->get();
           </pre>
 
-          <h6>Joins <a href="http://laravel-china.org/docs/5.1/5.0/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Joins <a href="http://laravel-china.org/docs/5.1/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 基本的 Join 声明语句
 DB::table('users')
@@ -589,7 +589,7 @@ DB::table('users')
     ->get();
           </pre>
 
-          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')->count();
 $price = DB::table('orders')->max('price');
@@ -603,7 +603,7 @@ DB::table('name')->cacheTags('my-key')->remember(5)->get();
 DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
           </pre>
 
-          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')
                    ->select(DB::raw('count(*) as user_count, status'))
@@ -659,7 +659,7 @@ DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
 
 <section class="cmd-description grid-item">
       <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 定义一个 Eloquent 模型
 class User extends Model {}
@@ -715,7 +715,7 @@ Model::all()->orderBy('column');
 Model::all()->orderBy('column','desc');
               </pre>
 
-              <h6>软删除 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>软删除 <a href="http://laravel-china.org/docs/5.1/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Model::withTrashed()->where('cars', 2)->get();
 // 在查询结果中包括带被软删除的模型
