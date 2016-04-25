@@ -440,7 +440,7 @@ DB::getQueryLog();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel.com/docs/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.1/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel.com/docs/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 URL::full();
 URL::current();
@@ -478,7 +478,7 @@ Event::subscribe('UserEventHandler');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="db" href="#db">DB</a> <a href="http://laravel.com/docs/5.0/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="db" href="#db">DB</a> <a href="http://laravel.com/docs/5.1/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
 
               <h6>Basic Database Usage</h6>
               <pre class="prettyprint lang-php">
@@ -501,7 +501,7 @@ DB::rollback();
 DB::commit();
               </pre>
 
-              <h6>Query Builder <a href="http://laravel.com/docs/5.0/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>Query Builder <a href="http://laravel.com/docs/5.1/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // Retrieving All Rows From A Table
 DB::table('name')->get();
@@ -567,7 +567,7 @@ DB::table('name')->having('count', '>', 100)->get();
 $users = DB::table('users')->skip(10)->take(5)->get();
           </pre>
 
-          <h6>Joins <a href="http://laravel.com/docs/5.0/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Joins <a href="http://laravel.com/docs/5.1/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // Basic Join Statement
 DB::table('users')
@@ -590,7 +590,7 @@ DB::table('users')
           ->get();
           </pre>
 
-          <h6>Aggregates <a href="http://laravel.com/docs/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Aggregates <a href="http://laravel.com/docs/5.1/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')->count();
 $price = DB::table('orders')->max('price');
@@ -604,7 +604,7 @@ DB::table('name')->cacheTags('my-key')->remember(5)->get();
 DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
           </pre>
 
-          <h6>Raw Expressions <a href="http://laravel.com/docs/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Raw Expressions <a href="http://laravel.com/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')
                    ->select(DB::raw('count(*) as user_count, status'))
@@ -661,7 +661,7 @@ DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
 
 <section class="cmd-description grid-item">
       <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel.com/docs/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-          <h6>Basic Usage <a href="http://laravel.com/docs/5.0/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Basic Usage <a href="http://laravel.com/docs/5.1/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // Defining An Eloquent Model
 class User extends Model {}
@@ -716,7 +716,7 @@ Model::all()->orderBy('column');
 Model::all()->orderBy('column','desc');
               </pre>
 
-              <h6>Soft Delete <a href="http://laravel.com/docs/5.0/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>Soft Delete <a href="http://laravel.com/docs/5.1/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Model::withTrashed()->where('cars', 2)->get();
 // Include the soft deleted models in the results
@@ -878,7 +878,7 @@ trans('messages.welcome');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="files" href="#files">File</a> <a href="http://laravel.com/api/5.0/Illuminate/Filesystem/Filesystem.html" title="Filesystem @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="files" href="#files">File</a> <a href="http://laravel.com/api/5.1/Illuminate/Filesystem/Filesystem.html" title="Filesystem @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 File::exists('path');
 File::get('path');
