@@ -5,7 +5,7 @@
         <link rel="shortcut icon" href="assets/ico/favicon.png">
         <meta name="description" content="Laravel Cheat Sheet , Codes , function , methods of laravel framework">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="@aufree">
+        <meta name="author" content="@summer">
         <title>Laravel 5.1 LTS 速查表</title>
       	<meta name="description" content="Laravel 5.1 LTS 速查表方便快速浏览，支持并且只支持 Laravel 5.1 LTS，支持手机访问，支持中英文版本">
       	<meta name="keywords" content="Laravel 5.1 LTS 速查表，Laravel 5.1 教程，Laravel 5.1 新手教程，Laravel 5.1 Artisan，Laravel 5.1 Auth，Laravel 5.1 Blade，Laravel 5.1 Cache，Laravel 5.1 Composer，Laravel 5.1 Config，Laravel 5.1 Container，Laravel 5.1 Cookie，Laravel 5.1 DB，Laravel 5.1 Environment，Laravel 5.1 Event，Laravel 5.1 File，Laravel 5.1 Form，Laravel 5.1 HTML，Laravel 5.1 Helper，Laravel 5.1 Input，Laravel 5.1 Lang，Laravel 5.1 Log，Laravel 5.1 Mail，Laravel 5.1 Model，Laravel 5.1 Pagination，Laravel 5.1 Queue，Laravel 5.1 Redirect，Laravel 5.1 Request，Laravel 5.1 Response，Laravel 5.1 Route，Laravel 5.1 SSH，Laravel 5.1 Schema，Laravel 5.1 Security，Laravel 5.1 Session，Laravel 5.1 String，Laravel 5.1 URL，Laravel 5.1 UnitTest，Laravel 5.1 Validation，Laravel 5.1 View">
@@ -74,16 +74,16 @@
                       </li>
 
                       <li class="social-icon">
-                        <a href="http://github.com/aufree" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="此项目由 Aufree 倾情维护">
+                        <a href="http://github.com/summerblue" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="此项目由 Summer 倾情维护">
                           <div class="avatar"></div>
                         </a>
-                        <a href="https://github.com/Aufree/laravel5-cheatsheet" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="在 GitHub 查看此项目">
+                        <a href="https://github.com/summerblue/laravel5-cheatsheet" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="在 GitHub 查看此项目">
                           <i class="icon-github"></i>
                         </a>
-                        <a href="https://twitter.com/_Paul_King_" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="关注我的 Twitter">
+                        <a href="https://twitter.com/Summer_Charlie" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="关注我的 Twitter">
                           <i class="icon-twitter"></i>
                         </a>
-                        <a href="http://weibo.com/jinfali" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="关注我的微博">
+                        <a href="http://weibo.com/1837553744" target="_blank" data-tooltip aria-haspopup="true" class="top" data-disable-hover="false" tabindex="2" title="关注我的微博">
                           <i class="icon-weibo"></i>
                         </a>
                       </li>
@@ -92,7 +92,7 @@
                           <i class="cn flag"></i>
                         </a>
                         <span class="vertical-line">|</span>
-                        <a href="https://aufree.github.io/laravel5-cheatsheet/">
+                        <a href="https://summerblue.github.io/laravel5-cheatsheet/">
                           <i class="gb flag"></i>
                         </a>
                       </li>
@@ -288,7 +288,7 @@ composer install
 composer update
 composer dump-autoload [--optimize]
 composer self-update
-composer require [options] [--] [vender/packages]...
+composer require [options] [--] [vendor/packages]...
               </pre>
 
               </section>
@@ -366,6 +366,7 @@ Route::pattern('bar', '[0-9]+')
               <pre class="prettyprint lang-php">
 // 为路由指定 Middleware
 Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
+Route::get('admin/profile', function(){})->middleware('auth');
               </pre>
 
               <h6>命名路由</h6>
@@ -375,6 +376,7 @@ Route::get('foo/bar', array('as' => 'foobar', function(){}));
 Route::get('user/profile', [
 'as' => 'profile', 'uses' => 'UserController@showProfile'
 ]);
+Route::get('user/profile', 'UserController@showProfile')->name('profile');
 $url = route('profile');
 $redirect = redirect()->route('profile');
               </pre>
@@ -476,7 +478,7 @@ Event::subscribe('UserEventHandler');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/5.0/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
 
               <h6>基本使用</h6>
               <pre class="prettyprint lang-php">
@@ -499,7 +501,7 @@ DB::rollback();
 DB::commit();
               </pre>
 
-              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/5.0/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 取得数据表的所有行
 DB::table('name')->get();
@@ -565,7 +567,7 @@ DB::table('name')->having('count', '>', 100)->get();
 $users = DB::table('users')->skip(10)->take(5)->get();
           </pre>
 
-          <h6>Joins <a href="http://laravel-china.org/docs/5.1/5.0/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Joins <a href="http://laravel-china.org/docs/5.1/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 基本的 Join 声明语句
 DB::table('users')
@@ -588,7 +590,7 @@ DB::table('users')
     ->get();
           </pre>
 
-          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')->count();
 $price = DB::table('orders')->max('price');
@@ -602,7 +604,7 @@ DB::table('name')->cacheTags('my-key')->remember(5)->get();
 DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
           </pre>
 
-          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')
                    ->select(DB::raw('count(*) as user_count, status'))
@@ -658,7 +660,7 @@ DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
 
 <section class="cmd-description grid-item">
       <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 定义一个 Eloquent 模型
 class User extends Model {}
@@ -715,7 +717,7 @@ Model::all()->orderBy('column');
 Model::all()->orderBy('column','desc');
               </pre>
 
-              <h6>软删除 <a href="http://laravel-china.org/docs/5.1/5.0/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>软删除 <a href="http://laravel-china.org/docs/5.1/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Model::withTrashed()->where('cars', 2)->get();
 // 在查询结果中包括带被软删除的模型

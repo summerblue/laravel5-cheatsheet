@@ -14,7 +14,7 @@ YES, we love LTS :sparkles:  :sparkles:  :sparkles:
 
 ### Live Version Here:
 
-* English: https://aufree.github.io/laravel5-cheatsheet/
+* English: https://summerblue.github.io/laravel5-cheatsheet/
 * 中文版本: https://cs.phphub.org/
 
 ## Thanks for
