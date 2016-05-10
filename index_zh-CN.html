@@ -692,6 +692,7 @@ Model::findOrFail(1);
 Model::findOrFail(array('first', 'last'));
 Model::where('foo', '=', 'bar')->get();
 Model::where('foo', '=', 'bar')->first();
+Model::where('foo', '=', 'bar')->exists();
 // 动态属性查找
 Model::whereFoo('bar')->first();
 // 查找失败时抛出异常

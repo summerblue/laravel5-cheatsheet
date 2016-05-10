@@ -692,6 +692,7 @@ Model::findOrFail(1);
 Model::findOrFail(array('first', 'last'));
 Model::where('foo', '=', 'bar')->get();
 Model::where('foo', '=', 'bar')->first();
+Model::where('foo', '=', 'bar')->exists();
 // dynamic
 Model::whereFoo('bar')->first();
 // Throw an exception if the lookup fails
