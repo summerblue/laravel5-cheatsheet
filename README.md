@@ -1,3 +1,5 @@
+![](http://ww3.sinaimg.cn/large/76dc7f1bjw1f2mqhtw9v6j21bs10m7fs.jpg)
+
 ## Introduction
 
 A quick reference guide (cheat sheet) for Laravel 5.1 LTS, listing artisan, composer, routes and other useful bits of information.
@@ -24,6 +26,4 @@ YES, we love LTS :sparkles:  :sparkles:  :sparkles:
 * [Laravel China](http://laravel-china.org/) - Laravel 中文文档
 * [Laravel 4 Cheat Sheet](https://github.com/jesseobrien/laravel-cheatsheet)
 
-## ScreenShots
 
-![](http://ww3.sinaimg.cn/large/76dc7f1bjw1f2mqhtw9v6j21bs10m7fs.jpg)
