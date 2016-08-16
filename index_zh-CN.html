@@ -497,7 +497,7 @@ DB::table('users')->update(['votes' => 1]);
 DB::table('posts')->delete();
 });
 DB::beginTransaction();
-DB::rollback();
+DB::rollBack();
 DB::commit();
               </pre>
 
@@ -597,11 +597,6 @@ $price = DB::table('orders')->max('price');
 $price = DB::table('orders')->min('price');
 $price = DB::table('orders')->avg('price');
 $total = DB::table('users')->sum('votes');
-
-DB::table('name')->remember(5)->get();
-DB::table('name')->remember(5, 'cache-key-name')->get();
-DB::table('name')->cacheTags('my-key')->remember(5)->get();
-DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
           </pre>
 
           <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
@@ -704,10 +699,6 @@ Model::where('foo', '=', 'bar')->delete();
 // 输出原始的查询语句
 Model::where('foo', '=', 'bar')->toSql();
 Model::whereRaw('foo = bar and cars = 2', array(20))->get();
-Model::remember(5)->get();
-Model::remember(5, 'cache-key-name')->get();
-Model::cacheTags('my-tag')->remember(5)->get();
-Model::cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
 Model::on('connection-name')->find(1);
 Model::with('relation')->get();
 Model::all()->take(10);

@@ -497,7 +497,7 @@ DB::transaction(function()
   DB::table('posts')->delete();
 });
 DB::beginTransaction();
-DB::rollback();
+DB::rollBack();
 DB::commit();
               </pre>
 
@@ -597,11 +597,6 @@ $price = DB::table('orders')->max('price');
 $price = DB::table('orders')->min('price');
 $price = DB::table('orders')->avg('price');
 $total = DB::table('users')->sum('votes');
-
-DB::table('name')->remember(5)->get();
-DB::table('name')->remember(5, 'cache-key-name')->get();
-DB::table('name')->cacheTags('my-key')->remember(5)->get();
-DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
           </pre>
 
           <h6>Raw Expressions <a href="http://laravel.com/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
@@ -704,10 +699,6 @@ Model::where('foo', '=', 'bar')->delete();
 //Output raw query
 Model::where('foo', '=', 'bar')->toSql();
 Model::whereRaw('foo = bar and cars = 2', array(20))->get();
-Model::remember(5)->get();
-Model::remember(5, 'cache-key-name')->get();
-Model::cacheTags('my-tag')->remember(5)->get();
-Model::cacheTags(array('my-first-key','my-second-key'))->remember(5)->get();
 Model::on('connection-name')->find(1);
 Model::with('relation')->get();
 Model::all()->take(10);
