@@ -63,8 +63,8 @@
                     </div>
                     <ul class="sidebar-bottom">
                       <li><a href="https://laravel-china.org/" class="button expand small radius alert">Laravel China 社区</a></li>
-                      <li><a href="https://laravel-china.org/docs/home" class="button expand small radius alert">Laravel 中文文档</a></li>
-                      <li ><a href="http://yousails.mikecrm.com/4Dh5uWU"  class="button expand small radius alert">Laravel 技术外包</a></li>
+                      <li><a href="https://d.laravel-china.org/" class="button expand small radius alert">Laravel 中文文档</a></li>
+                      <li ><a href="https://yousails.com/"  class="button expand small radius alert">Laravel 技术外包</a></li>
                       <li><a href="https://laravel-china.org/topics/3626/laravel-remote-and-its-sails-and-freedom" class="button expand small radius alert">Laravel 远程工作</a></li>
                       <li><a href="https://laravel-china.org/composer" class="button expand small radius alert">Composer 中国镜像</a></li>
                       <li><a href="https://laravel-china.github.io/php-the-right-way/" class="button expand small radius alert">PHP 之道（必读）</a></li>
@@ -106,9 +106,9 @@
                   <div class="large-10 columns code-column code-container">
                     <div class="grid">
                     <section class="cmd-description grid-item">
-                      <h4><a name="artisan" href="#artisan">Artisan</a> <a href="http://laravel-china.org/docs/5.1/artisan" title="Artisan CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+                      <h4><a name="artisan" href="#artisan">Artisan</a> <a href="http://d.laravel-china.org/docs/5.1/artisan" title="Artisan CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
                       <pre class="prettyprint lang-php">
-// 在版本 5.1.11 新添加，见 http://laravel-china.org/docs/5.1/5.1/authorization#creating-policies
+// 在版本 5.1.11 新添加，见 http://d.laravel-china.org/docs/5.1/authorization#creating-policies
 php artisan make:policy PostPolicy
 // 针对命令显示帮助信息
 php artisan --help OR -h
@@ -299,7 +299,7 @@ composer require [options] [--] [vendor/packages]...
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="Configuration" href="#Configuration">Config</a> <a href="http://laravel-china.org/docs/5.1/configuration" title="Configuration Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="Configuration" href="#Configuration">Config</a> <a href="http://d.laravel-china.org/docs/5.1/configuration" title="Configuration Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Config::get('app.timezone');
 //指定默认值
@@ -309,14 +309,14 @@ Config::set('database.default', 'sqlite');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="routing" href="#routing">Route</a> <a href="http://laravel-china.org/docs/5.1/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="http://laravel-china.org/docs/5.1/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
+              <h4><a name="routing" href="#routing">Route</a> <a href="http://d.laravel-china.org/docs/5.1/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="http://d.laravel-china.org/docs/5.1/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
               <pre class="prettyprint lang-php">
 Route::get('foo', function(){});
 Route::get('foo', 'ControllerName@function');
 Route::controller('foo', 'FooController');
               </pre>
 
-              <h6>资源路由 <a href="http://laravel-china.org/docs/5.1/controllers#restful-resource-controllers" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>资源路由 <a href="http://d.laravel-china.org/docs/5.1/controllers#restful-resource-controllers" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Route::resource('posts','PostsController');
 // 资源路由器只允许指定动作通过
@@ -324,14 +324,14 @@ Route::resource('photo', 'PhotoController',['only' => ['index', 'show']]);
 Route::resource('photo', 'PhotoController',['except' => ['update', 'destroy']]);
               </pre>
 
-              <h6>触发错误 <a href="http://laravel-china.org/docs/5.1/routing#throwing-404-errors" title="throwing-404-errors @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>触发错误 <a href="http://d.laravel-china.org/docs/5.1/routing#throwing-404-errors" title="throwing-404-errors @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 App::abort(404);
 $handler->missing(...) in ErrorServiceProvider::boot();
 throw new NotFoundHttpException;
               </pre>
 
-              <h6>路由参数 <a href="http://laravel-china.org/docs/5.1/routing#route-parameters" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>路由参数 <a href="http://d.laravel-china.org/docs/5.1/routing#route-parameters" title="RESTful Controllers @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Route::get('foo/{bar}', function($bar){});
 Route::get('foo/{bar?}', function($bar = 'bar'){});
@@ -367,7 +367,7 @@ Route::get('foo/{bar}/{baz}', function($bar, $baz){})
 Route::pattern('bar', '[0-9]+')
               </pre>
 
-              <h6>HTTP 中间件 <a href="http://laravel-china.org/docs/5.1/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>HTTP 中间件 <a href="http://d.laravel-china.org/docs/5.1/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 为路由指定 Middleware
 Route::get('admin/profile', ['middleware' => 'auth', function(){}]);
@@ -409,7 +409,7 @@ Route::group(array('domain' => '{sub}.example.com'), function(){});
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="app" href="#app">Environment</a> <a href="http://laravel-china.org/docs/5.1/configuration#environment-configuration" title="Environment Configuration @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="app" href="#app">Environment</a> <a href="http://d.laravel-china.org/docs/5.1/configuration#environment-configuration" title="Environment Configuration @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 $environment = app()->environment();
 $environment = App::environment();
@@ -422,7 +422,7 @@ if ($app->environment('local', 'staging')){}
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="log" href="#log">Log</a> <a href="http://laravel-china.org/docs/5.1/errors#logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="log" href="#log">Log</a> <a href="http://d.laravel-china.org/docs/5.1/errors#logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // 记录器提供了 7 种在 RFC 5424 标准内定义的记录等级:
 // debug, info, notice, warning, error, critical, and alert.
@@ -436,7 +436,7 @@ Log::getMonolog();
 Log::listen(function($level, $message, $context) {});
               </pre>
 
-              <h6>记录 SQL 查询语句 <a href="http://laravel-china.org/docs/5.1/database#query-logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>记录 SQL 查询语句 <a href="http://d.laravel-china.org/docs/5.1/database#query-logging" title="Log @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 开启 log
 DB::connection()->enableQueryLog();
@@ -446,7 +446,7 @@ DB::getQueryLog();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://laravel-china.org/docs/5.1/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="urls" href="#urls">URL</a> <a href="http://laravel.com/api/5.0/Illuminate/Routing/UrlGenerator.html" title="UrlGenerator @ Laravel Docs"><i class="icon-file-text"></i></a>&nbsp;<a href="http://d.laravel-china.org/docs/5.1/helpers#urls" title="URL helper @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 URL::full();
 URL::current();
@@ -467,7 +467,7 @@ URL::setRequest($request);
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="events" href="#events">Event</a> <a href="http://laravel-china.org/docs/5.1/events" title="Events @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="events" href="#events">Event</a> <a href="http://d.laravel-china.org/docs/5.1/events" title="Events @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Event::fire('foo.bar', array($bar));
 // 注册一个事件监听器.
@@ -483,7 +483,7 @@ Event::subscribe('UserEventHandler');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="db" href="#db">DB</a> <a href="http://laravel-china.org/docs/5.1/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="db" href="#db">DB</a> <a href="http://d.laravel-china.org/docs/5.1/database" title="Basic Database Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
 
               <h6>基本使用</h6>
               <pre class="prettyprint lang-php">
@@ -506,7 +506,7 @@ DB::rollBack();
 DB::commit();
               </pre>
 
-              <h6>查询语句构造器 <a href="http://laravel-china.org/docs/5.1/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>查询语句构造器 <a href="http://d.laravel-china.org/docs/5.1/queries" title="Query Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 取得数据表的所有行
 DB::table('name')->get();
@@ -572,7 +572,7 @@ DB::table('name')->having('count', '>', 100)->get();
 $users = DB::table('users')->skip(10)->take(5)->get();
           </pre>
 
-          <h6>Joins <a href="http://laravel-china.org/docs/5.1/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>Joins <a href="http://d.laravel-china.org/docs/5.1/queries#joins" title="Joins @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 基本的 Join 声明语句
 DB::table('users')
@@ -595,7 +595,7 @@ DB::table('users')
     ->get();
           </pre>
 
-          <h6>聚合 <a href="http://laravel-china.org/docs/5.1/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>聚合 <a href="http://d.laravel-china.org/docs/5.1/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')->count();
 $price = DB::table('orders')->max('price');
@@ -604,7 +604,7 @@ $price = DB::table('orders')->avg('price');
 $total = DB::table('users')->sum('votes');
           </pre>
 
-          <h6>原始表达句<a href="http://laravel-china.org/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+          <h6>原始表达句<a href="http://d.laravel-china.org/docs/5.1/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 $users = DB::table('users')
                    ->select(DB::raw('count(*) as user_count, status'))
@@ -659,8 +659,8 @@ DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
       </section>
 
 <section class="cmd-description grid-item">
-      <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-          <h6>基础使用 <a href="http://laravel-china.org/docs/5.1/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+      <h4><a name="eloquent" href="#eloquent">Model</a> <a href="http://d.laravel-china.org/docs/5.1/eloquent" title="Eloquent @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+          <h6>基础使用 <a href="http://d.laravel-china.org/docs/5.1/eloquent#basic-usage" title="Basic Usage @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
           <pre class="prettyprint lang-php">
 // 定义一个 Eloquent 模型
 class User extends Model {}
@@ -713,7 +713,7 @@ Model::all()->orderBy('column');
 Model::all()->orderBy('column','desc');
               </pre>
 
-              <h6>软删除 <a href="http://laravel-china.org/docs/5.1/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>软删除 <a href="http://d.laravel-china.org/docs/5.1/eloquent#soft-deleting" title="Soft Deleting @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Model::withTrashed()->where('cars', 2)->get();
 // 在查询结果中包括带被软删除的模型
@@ -846,7 +846,7 @@ Eloquent::reguard();
   </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="pagination" href="#pagination">Pagination</a> <a href="http://laravel-china.org/docs/5.1/pagination" title="Pagination @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="pagination" href="#pagination">Pagination</a> <a href="http://d.laravel-china.org/docs/5.1/pagination" title="Pagination @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // 自动处理分页逻辑
 Model::paginate(15);
@@ -861,7 +861,7 @@ $variable->links();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="localization" href="#localization">Lang</a> <a href="http://laravel-china.org/docs/5.1/localization" title="Localization @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="localization" href="#localization">Lang</a> <a href="http://d.laravel-china.org/docs/5.1/localization" title="Localization @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 App::setLocale('en');
 Lang::get('messages.welcome');
@@ -929,7 +929,7 @@ File::cleanDirectory('directory');
               </section>
 
             <section class="cmd-description grid-item">
-              <h4><a name="unittest" href="#unittest">UnitTest</a> <a href="http://laravel-china.org/docs/5.1/testing" title="Unit testing @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="unittest" href="#unittest">UnitTest</a> <a href="http://d.laravel-china.org/docs/5.1/testing" title="Unit testing @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <h6>Install and run</h6>
               <pre class="prettyprint lang-php">
 // 将其加入到 composer.json 并更新:
@@ -969,7 +969,7 @@ $this->seed($connection);
             </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="SSH" href="#SSH">SSH</a> <a href="http://laravel-china.org/docs/5.1/ssh" title="SSH @ Laravel Docs"><i class="icon-file-text"></i></a>
+              <h4><a name="SSH" href="#SSH">SSH</a> <a href="http://d.laravel-china.org/docs/5.1/ssh" title="SSH @ Laravel Docs"><i class="icon-file-text"></i></a>
               </h4>
               <h6>Executing Commands</h6>
               <pre class="prettyprint lang-php">
@@ -1001,7 +1001,7 @@ SSH::putString($string, $remotePath);
           </section>
 
           <section class="cmd-description grid-item">
-              <h4><a name="schema" href="#chema">Schema</a> <a href="http://laravel-china.org/docs/5.1/schema" title="Schema Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="schema" href="#chema">Schema</a> <a href="http://d.laravel-china.org/docs/5.1/schema" title="Schema Builder @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // 创建指定数据表
 Schema::create('table', function($table)
@@ -1117,7 +1117,7 @@ $table->morphs('parent');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="input" href="#input">Input</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="input" href="#input">Input</a> <a href="http://d.laravel-china.org/docs/5.1/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Input::get('key');
 // 指定默认值
@@ -1164,7 +1164,7 @@ Input::file('name')->move($destinationPath, $fileName);
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="cache" href="#cache">Cache</a> <a href="http://laravel-china.org/docs/5.1/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="cache" href="#cache">Cache</a> <a href="http://d.laravel-china.org/docs/5.1/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Cache::put('key', 'value', $minutes);
 Cache::add('key', 'value', $minutes);
@@ -1193,7 +1193,7 @@ Cache::section('group')->flush();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="cookies" href="#cookies">Cookie</a> <a href="http://laravel-china.org/docs/5.1/requests#cookies" title="Cookies @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="cookies" href="#cookies">Cookie</a> <a href="http://d.laravel-china.org/docs/5.1/requests#cookies" title="Cookies @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Cookie::get('key');
 Cookie::get('key', 'default');
@@ -1213,7 +1213,7 @@ $response->withCookie(Cookie::make('name', 'value', $minutes));
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="sessions" href="#sessions">Session</a> <a href="http://laravel-china.org/docs/5.1/session" title="Session @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="sessions" href="#sessions">Session</a> <a href="http://d.laravel-china.org/docs/5.1/session" title="Session @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Session::get('key');
 // 从会话中读取一个条目
@@ -1246,7 +1246,7 @@ Session::keep(array('key1', 'key2'));
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="requests" href="#requests">Request</a> <a href="http://laravel-china.org/docs/5.1/requests" title="Requests @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="requests" href="#requests">Request</a> <a href="http://d.laravel-china.org/docs/5.1/requests" title="Requests @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // url: http://xx.com/aa/bb
 Request::url();
@@ -1291,7 +1291,7 @@ Request::wantsJson();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="responses" href="#responses">Response</a> <a href="http://laravel-china.org/docs/5.1/responses" title="Responses @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="responses" href="#responses">Response</a> <a href="http://d.laravel-china.org/docs/5.1/responses" title="Responses @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 return Response::make($contents);
 return Response::make($contents, 200);
@@ -1312,7 +1312,7 @@ return Response::make($content)
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="redirects" href="#redirects">Redirect</a> <a href="http://laravel-china.org/docs/5.1/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="redirects" href="#redirects">Redirect</a> <a href="http://d.laravel-china.org/docs/5.1/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 return Redirect::to('foo/bar');
 return Redirect::to('foo/bar')->with('key', 'value');
@@ -1336,7 +1336,7 @@ return Redirect::intended('foo/bar');
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="service-container" href="#service-container">Container</a> <a href="http://laravel-china.org/docs/5.1/container" title="Service Container @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="service-container" href="#service-container">Container</a> <a href="http://d.laravel-china.org/docs/5.1/container" title="Service Container @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 App::bind('foo', function($app){ return new Foo; });
 App::make('foo');
@@ -1358,7 +1358,7 @@ App::resolving(function($object){});
 
 <section class="cmd-description grid-item">
               <h4><a name="security" href="#security">Security</a></h4>
-              <h6>哈希 <a href="http://laravel-china.org/docs/5.1/hashing" title="Hashing @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>哈希 <a href="http://d.laravel-china.org/docs/5.1/hashing" title="Hashing @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 Hash::make('secretpassword');
 Hash::check('secretpassword', $hashedPassword);
@@ -1378,7 +1378,7 @@ Crypt::setCipher($cipher);
 <section class="cmd-description grid-item">
               <h4><a name="auth" href="#auth">Auth</a></h4>
 
-              <h6>用户认证 <a href="http://laravel-china.org/docs/5.1/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>用户认证 <a href="http://d.laravel-china.org/docs/5.1/authentication" title="Authentication @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 判断当前用户是否已认证（是否已登录）
 Auth::check();
@@ -1410,7 +1410,7 @@ Auth::onceBasic();
 Password::remind($credentials, function($message, $user){});
               </pre>
 
-              <h6>用户授权 <a href="http://laravel-china.org/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
+              <h6>用户授权 <a href="http://d.laravel-china.org/docs/5.1/authorization" title="Authorization @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
               <pre class="prettyprint lang-php">
 // 定义权限
 Gate::define('update-post', 'Class@method');
@@ -1455,7 +1455,7 @@ $this->authorizeForUser($user, 'update', $post);
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="mail" href="#mail">Mail</a> <a href="http://laravel-china.org/docs/5.1/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="mail" href="#mail">Mail</a> <a href="http://d.laravel-china.org/docs/5.1/mail" title="Mail @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Mail::send('email.view', $data, function($message){});
 Mail::send(array('html.view', 'text.view'), $data, $callback);
@@ -1491,7 +1491,7 @@ $message->getSwiftMessage();
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="queues" href="#queues">Queue</a> <a href="http://laravel-china.org/docs/5.1/queues" title="Queues @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="queues" href="#queues">Queue</a> <a href="http://d.laravel-china.org/docs/5.1/queues" title="Queues @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Queue::push('SendMail', array('message' => $message));
 Queue::push('SendEmail@send', array('message' => $message));
@@ -1519,7 +1519,7 @@ php artisan queue:flush
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="validation" href="#validation">Validation</a> <a href="http://laravel-china.org/docs/5.1/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="validation" href="#validation">Validation</a> <a href="http://d.laravel-china.org/docs/5.1/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 Validator::make(
 array('key' => 'Foo'),
@@ -1579,7 +1579,7 @@ url
 
 </section>
 <section class="cmd-description grid-item">
-              <h4><a name="views" href="#views">View</a> <a href="http://laravel-china.org/docs/5.1/views" title="Views @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="views" href="#views">View</a> <a href="http://d.laravel-china.org/docs/5.1/views" title="Views @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 View::make('path/to/view');
 View::make('foo/bar')->with('key', 'value');
@@ -1602,7 +1602,7 @@ View::creator('viewname', function($view){});
               </section>
 
 <section class="cmd-description grid-item">
-<h4><a name="blade" href="#blade">Blade</a> <a href="http://laravel-china.org/docs/5.1/templates#blade-templating" title="Blade Templating @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+<h4><a name="blade" href="#blade">Blade</a> <a href="http://d.laravel-china.org/docs/5.1/templates#blade-templating" title="Blade Templating @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // 区块占位
 @yield('name')
@@ -1759,7 +1759,7 @@ HTML::obfuscate($value);
               </section>
 
 <section class="cmd-description grid-item">
-              <h4><a name="str" href="#str">String</a> <a href="http://laravel-china.org/docs/5.1/helpers#strings" title="Strings CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
+              <h4><a name="str" href="#str">String</a> <a href="http://d.laravel-china.org/docs/5.1/helpers#strings" title="Strings CLI @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
               <pre class="prettyprint lang-php">
 // 将 UTF-8 的值直译为 ASCII 类型的值
 Str::ascii($value)
