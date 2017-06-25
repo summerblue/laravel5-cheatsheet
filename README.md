@@ -1,12 +1,13 @@
-![](http://ww3.sinaimg.cn/large/76dc7f1bjw1f2mqhtw9v6j21bs10m7fs.jpg)
-
 <p align="center">
-  <b>Always inventing, Always delivering:</b>
-  <br><br>
+  <br>
+  <b>创造不息，交付不止</b>
+  <br>
   <a href="https://www.yousails.com">
     <img src="https://yousails.com/banners/brand.png" width=350>
   </a>
 </p>
+
+![](http://ww3.sinaimg.cn/large/76dc7f1bjw1f2mqhtw9v6j21bs10m7fs.jpg)
 
 ## Introduction
 
